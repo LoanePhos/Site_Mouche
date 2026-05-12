@@ -1,21 +1,17 @@
 /* ============================================================
-   RESET
-   Supprime les marges, paddings et redéfinit le box-model
-   pour tous les éléments afin d'avoir une base cohérente
-   entre tous les navigateurs
-   ============================================================ */
+                            RESET
+============================================================ */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box;                           /* En gros c'est jsute pour que ça s'adapte bien à tous les navigateurs */
 }
 
 
 /* ============================================================
-   FONTS
-   ============================================================ */
+                            FONTS
+============================================================ */
 
-/* Police principale décorative — version "Messy" (irrégulière) */
 @font-face {
   font-family: 'BianzhidaiMessy';
   src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
@@ -23,7 +19,6 @@
   font-style: normal;
 }
 
-/* Police principale décorative — version "Pearl" (plus lisible) */
 @font-face {
   font-family: 'BianzhidaiPearl';
   src: url('fonts/bianzhidai_noBG-Pearl.woff') format('woff');
@@ -31,7 +26,6 @@
   font-style: normal;
 }
 
-/* Police de texte courante — style gras géométrique */
 @font-face {
   font-family: 'GapSansBold';
   src: url('fonts/gapsansbold-webfont.woff') format('woff');
@@ -39,7 +33,6 @@
   font-style: normal;
 }
 
-/* Police secondaire — utilisée pour les sous-titres dans les popups */
 @font-face {
   font-family: 'Roberte';
   src: url('fonts/Roberte-Regular.woff') format('woff');
@@ -49,33 +42,29 @@
 
 
 /* ============================================================
-   HEADER — BARRE DE NAVIGATION CENTRALE
-   La topnav est positionnée en fixed au centre de l'écran
-   (horizontalement et verticalement) et reste toujours visible
-   par-dessus le contenu grâce à z-index: 999.
-   mix-blend-mode: screen la rend semi-transparente sur les images.
-   ============================================================ */
+                          NAVIGATION
+============================================================ */
+
 .topnav {
-  background-color: #ffffff;
-  mix-blend-mode: screen;           /* Effet de fusion visuelle avec le fond */
+  background-color: #ffffff;                  /* Couleur du fond */
+  mix-blend-mode: screen;                       /* Mode de fusion */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2vw;                         /* Espacement entre les items du menu */
-  width: clamp(200px, 60vw, 400px); /* Largeur fluide entre 200px et 400px */
-  height: 6vh;
+  gap: 2vw;                                     /* Espacement entre les items du menu */
+  width: clamp(400px, 60vw, 600px);             /* Largeur responsive du menu */
+  height: 6vh;                                  /* Hauteur du menu */
   position: fixed;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centrage exact au milieu de l'écran */
-  z-index: 999;                     /* Au-dessus des popups (500) et du contenu */
-  border: 3.6px dotted black;
-  overflow: visible;                /* Permet aux dropdowns de déborder */
-  white-space: nowrap;              /* Empêche les liens de passer à la ligne */
+  left: 50%;   
+  transform: translate(-50%, -50%);             /* Centrer le menu */
+  z-index: 999;
+  border: 3.6px dotted black;                 /* Contour du menu */
+  overflow: visible;
+  white-space: nowrap;
 }
 
-/* Conteneur de chaque item du menu (Archives, Ludospace…)
-   Position relative pour ancrer le dropdown en dessous */
+/* Conteneur de chaque item du menu (Archives, Ludospace…) */
 .nav-item {
   position: relative;
   height: 100%;
@@ -83,61 +72,49 @@
   align-items: center;
 }
 
-/* Lien principal de chaque item du menu */
+/* Items du menu principal */
 .nav-item > a {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(80px, 10vw, 160px);       /* Largeur fluide */
-  text-align: center;
-  font-family: 'BianzhidaiPearl', sans-serif;
-  color: #463838;
+  width: clamp(100px, 10vw, 200px);             /* Largeur responsive des box d'item */
+  text-align: center; 
+  font-family: 'BianzhidaiPearl', sans-serif;   /* Font utilisée */
+  color: #000000;                             /* Couleur de la font */
   text-decoration: none;
-  font-size: clamp(9px, 2vw, 18px);      /* Taille fluide */
+  font-size: clamp(9px, 2vw, 18px);             /* Taille responsive de la typo */
   position: relative;
 }
 
-/* Pseudo-élément ::after — texte alternatif visible au survol.
-   Utilise l'attribut data-text du HTML comme contenu.
-   Superposé au texte normal, il apparaît en violet au hover. */
+/* Item au survol */
 .nav-item > a::after {
-  content: attr(data-text);              /* Récupère data-text="..." du HTML */
+  content: attr(data-text);                     /* Récupère data-text="..." du HTML */
   font-family: 'BianzhidaiMessy', sans-serif;
-  font-size: clamp(7px, 1.8vw, 14px);
-  color: #7562C7;
+  font-size: clamp(7px, 1.8vw, 14px);           /* Taille responsive de la typo */
+  color: #000000;
   position: absolute;
-  inset: 0;                              /* Couvre exactement le lien parent */
+  inset: 0;                                     /* Couvre exactement le lien parent */
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;                            /* Invisible par défaut */
+  opacity: 0;                                   /* Invisible par défaut */
 }
 
-/* Au survol : masque le texte normal pour laisser place au ::after */
+/* Masque le texte normal au survol pour montrer le ::after sinon les textes bougent à cause des différentes typos */
 .nav-item > a:hover { color: transparent; }
 .nav-item > a:hover::after { opacity: 1; }
 
-/* État actif d'un lien (page courante) :
-   applique directement le style "Messy" violet */
-.nav-item > a.active {
-  font-family: 'BianzhidaiMessy', sans-serif;
-  color: #7562C7;
-  font-size: clamp(7px, 1.8vw, 14px);
-}
-
-/* DROPDOWN — sous-menu qui apparaît au survol d'un nav-item.
-   Caché par défaut, affiché via :hover sur le parent.
-   z-index: 1000 pour passer au-dessus du topnav (999). */
+/* Sous-Menu général set-up*/
 .dropdown {
   display: none;
   position: absolute;
-  top: 100%;                            /* Se positionne juste sous le nav-item */
+  top: 100%;                                    /* Se positionne juste sous le nav-item */
   left: 0;
   background: #ffffff;
-  border: 2px dotted black;
-  z-index: 1000;
-  min-width: 100%;                      /* Au moins aussi large que le nav-item */
+  border: 3.6px dotted black;                 /* Contours */
+  z-index: 980;
+  min-width: 100%;                              /* Au moins aussi large que le nav-item */
 }
 
 /* Liens à l'intérieur du dropdown */
@@ -145,11 +122,11 @@
   display: block;
   width: auto;
   line-height: normal;
-  padding: 8px 1.2vw;
+  padding: 12px 1.2vw;                           /* Écarts entre les items */
   font-family: 'GapSansBold', sans-serif;
-  color: #463838;
+  color: #000000;
   text-decoration: none;
-  font-size: clamp(10px, 1.3vw, 16px);
+  font-size: clamp(10px, 1.3vw, 16px);           /* Taille responsive de la typo */
 }
 
 /* Affiche le dropdown quand la souris survole le nav-item parent */
@@ -157,28 +134,27 @@
 
 
 /* ============================================================
-   GALERIE — GRILLE D'IMAGES
-   Disposition en 3 colonnes égales, sans gouttières.
-   Passe à 2 colonnes sur tablette, 1 colonne sur mobile.
-   ============================================================ */
+                            GRILLE
+============================================================ */
+
 .grille {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);         /* Nombre de colonnes */
   gap: 0;
   width: 100%;
 }
 
-/* Tablette : 2 colonnes */
-@media (max-width: 900px) {
+/* Tablette */
+@media (max-width: 900px) {                      /* Limite mode tablette */
   .grille {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);       /* Nombre de colonnes */
   }
 }
 
-/* Mobile : 1 colonne */
-@media (max-width: 500px) {
+/* Mobile */
+@media (max-width: 500px) {                      /* Limite mode mobile */
   .grille {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;                  /* Nombre de colonnes */
   }
 }
 
@@ -186,29 +162,28 @@
 .grille a {
   display: block;
   overflow: hidden;
-  aspect-ratio: 2 / 1;                  /* Format paysage 2:1 */
-  position: relative;                   /* Pour positionner l'overlay */
+  aspect-ratio: 2 / 1;                          /* Format des images de la grille */
+  position: relative;                           /* Pour positionner l'overlay */
 }
 
-/* Image dans la grille — couvre toute la cellule */
+/* Image dans la grille */
 .grille a img {
   width: 100%;
   height: 100%;
-  object-fit: cover;                    /* Recadre sans déformer */
+  object-fit: cover;                            /* Recadre sans déformer */
   display: block;
-  transition: filter 0.4s ease;        /* Transition douce au hover */
+  transition: filter 0.4s ease;                 /* Transition douce au hover */
 }
 
-/* Effet sur l'image au survol : couleurs saturées et légèrement assombries */
+/* Effet sur l'image au survol */
 .grille a:hover img {
   filter: saturate(4) brightness(0.8);
 }
 
-/* Overlay — couche de texte superposée à l'image.
-   Invisible par défaut, apparaît au survol via opacity. */
+/* Overlay */
 .grille a .overlay {
   position: absolute;
-  inset: 0;                             /* Couvre toute la cellule */
+  inset: 0;                                     /* Couvre toute la cellule */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,36 +202,34 @@
 /* Titre dans l'overlay (date / heure) */
 .grille a .overlay h3 {
   font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(14px, 1.5vw, 24px);
+  font-size: clamp(14px, 1.5vw, 24px);          /* Taille responsive de la typo */
   color: #ffffff;
   margin: 0;
+  opacity: 60%;
 }
 
 /* Sous-titre dans l'overlay (lieu / événement) */
 .grille a .overlay p {
   font-family: 'GapSansBold', sans-serif;
-  font-size: clamp(11px, 1vw, 16px);
+  font-size: clamp(11px, 1vw, 16px);            /* Taille responsive de la typo */
   color: #ffffff;
   margin: 0;
+  opacity: 60%;
 }
 
 
 /* ============================================================
-   POPUPS — FENÊTRES FLOTTANTES
-   Toutes les popups partagent ces styles de base.
-   Elles sont cachées par défaut (display: none) et s'affichent
-   quand le JS leur ajoute la classe .is-open.
-   z-index: 500 les place sous le topnav (999) et le dropdown (1000).
-   ============================================================ */
+                          POP-UP
+============================================================ */
 .popup-box {
   display: none;                        /* Caché par défaut */
   background: #ffffff;
-  mix-blend-mode: difference;           /* Effet de fusion — inverse les couleurs sous la popup */
+  mix-blend-mode: difference;           /* Mode de fusion */
   border: 3.6px dotted black;
   padding: clamp(1rem, 3vw, 2rem);
   overflow-y: auto;                     /* Scroll interne si le contenu dépasse */
   position: fixed;                      /* Reste à l'écran indépendamment du scroll */
-  z-index: 500;                         /* Sous le topnav (999) mais au-dessus du contenu */
+  z-index: 500;                         /* Sous le menu (999) mais au-dessus du contenu */
 }
 
 /* Classe ajoutée par le JS pour afficher une popup */
@@ -265,23 +238,23 @@
 
 /* --- Positionnement individuel de chaque popup --- */
 
-/* Popup La Machine — grande, à gauche */
-.popup-lamachine {
+/* Popup Machine */
+.popup-machine {
   width: clamp(260px, 40%, 600px);
   height: 60vh;
-  top: 10%;
+  top: 8%;
   left: 5%;
 }
 
-/* Popup Itinéraire — moyenne, au centre */
+/* Popup Itinéraire */
 .popup-itineraire {
-  width: clamp(220px, 30%, 500px);
-  height: 50vh;
-  top: 20%;
-  left: clamp(5%, 35%, 50%);
+  width: 50vw;
+  height: 36vh;
+  bottom: 4%;
+  left: 22%;
 }
 
-/* Popup Mouche — étroite, à droite */
+/* Popup Mouche */
 .popup-mouche {
   width: clamp(180px, 20vw, 400px);
   height: 70vh;
@@ -289,8 +262,7 @@
   right: clamp(2%, 16%, 20%);
 }
 
-/* Sur mobile : toutes les popups prennent toute la largeur
-   et se superposent au même endroit */
+/* Sur mobile toutes les popups prennent toute la largeur et se superposent au même endroit */
 @media (max-width: 600px) {
   .popup-lamachine,
   .popup-itineraire,
@@ -303,14 +275,11 @@
   }
 }
 
-
-/* --- Typographie à l'intérieur des popups --- */
-
 /* Titre principal de la popup (nom du lieu) */
 .popup-box h2 {
   font-family: 'BianzhidaiPearl', sans-serif;
   font-size: clamp(16px, 4vw, 28px);
-  color: #463838;
+  color: #000000;
   margin-bottom: 1rem;
 }
 
@@ -318,7 +287,7 @@
 .popup-box h3 {
   font-family: 'Roberte', sans-serif;
   font-size: clamp(12px, 3vw, 18px);
-  color: #463838;
+  color: #000000;
   margin: 0;
   -webkit-text-stroke: 0.5px #463838;  /* Légère épaisseur sur les navigateurs webkit */
 }
@@ -337,16 +306,13 @@
   line-height: 1.6;
 }
 
-/* Bouton de fermeture ✕ — positionné en haut à droite de la popup */
+/* Bouton de fermeture */
 .popup-close {
   position: absolute;
   top: 12px;
   right: 16px;
   font-family: 'GapSansBold', sans-serif;
-  color: #463838;
+  color: #000000;
   text-decoration: none;
   font-size: 18px;
 }
-
-/* Passe en violet au survol */
-.popup-close:hover { color: #7562C7; }
