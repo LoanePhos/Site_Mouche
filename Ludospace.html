@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Le Ludospace</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+<header class="topnav">
+  <div class="nav-item">
+    <a href="Ludospace.html" data-text="Archives ▾">Archives ▾</a>
+    <div class="dropdown">
+      <a href="Ludospace.html" data-popup-archive>Fête de l'Humanité</a>
+      <a href="Ludospace.html" data-popup-archive>Biennale De Renava</a>
+      <a href="Ludospace.html" data-popup-archive>École Estienne</a>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="#" data-text="Ludospace ▾">Ludospace ▾</a>
+    <div class="dropdown">
+      <a href="#" data-popup="popup-machine">Machine</a>
+      <a href="#" data-popup="popup-itineraire">Itinéraire</a>
+      <a href="#" data-popup="popup-mouche">Mouche</a>
+    </div>
+  </div>
+</header>
+
+  <main>
+
+    <div class="grille">
+
+    <a href="#">
+      <img src="images/Test_1.jpg" alt="Image 1">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_2.jpg" alt="Image 2">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_1.jpg" alt="Image 3">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_2.jpg" alt="Image 4">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_1.jpg" alt="Image 5">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_2.jpg" alt="Image 6">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_1.jpg" alt="Image 1">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_2.jpg" alt="Image 2">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_1.jpg" alt="Image 3">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_2.jpg" alt="Image 4">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_1.jpg" alt="Image 5">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    <a href="#">
+      <img src="images/Test_2.jpg" alt="Image 6">
+      <div class="overlay">
+        <h3>18.05.26 - 14H56</h3>
+        <p>École Estienne</p>
+      </div>
+    </a>
+
+    </div>
+  </main>
+
+  <!-- POPUPS LUDOSPACE -->
+  <div class="popup-box popup-machine" id="popup-machine">
+    <a href="#" class="popup-close">✕</a>
+    <h2>La Machine</h2>
+    <img src="images/machine.jpg" alt="La Machine">
+    <p>Ton texte ici...</p>
+  </div>
+
+  <div class="popup-box popup-itineraire" id="popup-itineraire">
+    <a href="#" class="popup-close">✕</a>
+    <h2>Itinéraire</h2>
+    <img src="images/itineraire.jpg" alt="Itinéraire">
+    <p>Ton texte ici...</p>
+  </div>
+
+  <div class="popup-box popup-mouche" id="popup-mouche">
+    <a href="#" class="popup-close">✕</a>
+    <h2>Mouche</h2>
+    <img src="images/logo.png" alt="Mouche">
+    <p>Mouche est un collectif pluridisciplinaire d'exploration de nouvelles narratives. À travers la curation d'archives, nous développons des protocoles de création qui questionnent les formes narratives dominantes et valorisent des récits invisibilisés.</p>
+    <p>Les outils numériques y sont envisagés comme des espaces d'expérimentation, de dialogue et de mise en lisibilité d'images peu partagées.</p>
+    <h3>Ornella Antony • Gaspard Calais • Loane De Almeida Costa • Ulysse Migeat</h3>
+  </div>
+
+  <script>
+    const LUDOSPACE_IDS = ['popup-machine', 'popup-itineraire', 'popup-mouche'];
+
+    function closeAllLudospace() {
+      LUDOSPACE_IDS.forEach(id => {
+        document.getElementById(id).classList.remove('is-open');
+      });
+    }
+
+    document.addEventListener('click', function(e) {
+
+      // Bouton fermer
+      const closeBtn = e.target.closest('.popup-close');
+      if (closeBtn) {
+        e.preventDefault();
+        closeBtn.closest('.popup-box').classList.remove('is-open');
+        return;
+      }
+
+      // Liens Ludospace (Machine / Itinéraire / Mouche)
+      const ludoTrigger = e.target.closest('[data-popup]');
+      if (ludoTrigger) {
+        e.preventDefault();
+        const targetId = ludoTrigger.dataset.popup;
+        const targetEl = document.getElementById(targetId);
+        if (!targetEl) return;
+        // Toggle la popup cliquée, sans toucher aux autres du groupe
+        targetEl.classList.toggle('is-open');
+        return;
+      }
+
+      // Liens Archives : fermer toutes les popups Ludospace
+      const archiveTrigger = e.target.closest('[data-popup-archive]');
+      if (archiveTrigger) {
+        closeAllLudospace();
+        // La navigation vers la page archive se fait normalement (href)
+      }
+
+    });
+  </script>
+
+</body>
+
+</html>
