@@ -51,8 +51,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2vw;                                     /* Espacement entre les items du menu */
-  width: clamp(300px, 60vw, 500px);             /* Largeur responsive du menu */
+  gap: 2.6vw;                                   /* Espacement entre les items du menu */
+  width: clamp(360px, 60vw, 560px);             /* Largeur responsive du menu */
   height: 6vh;                                  /* Hauteur du menu */
   position: fixed;
   top: 50%;
@@ -226,10 +226,11 @@
   background: #ffffff;
   mix-blend-mode: difference;           /* Mode de fusion */
   border: 3.6px dotted black;
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: clamp(0.75rem, 2vw, 2rem);
   overflow-y: auto;                     /* Scroll interne si le contenu dépasse */
   position: fixed;                      /* Reste à l'écran indépendamment du scroll */
   z-index: 500;                         /* Sous le menu mais au-dessus du contenu */
+  box-sizing: border-box;
 }
 
 /* Classe ajoutée par le JS pour afficher une popup */
@@ -237,53 +238,75 @@
 
 /* Popup Machine */
 .popup-machine {
-  width: clamp(260px, 40%, 500px);
-  height: 60vh;
-  top: 24%;
-  left: 5%;
+  width: clamp(220px, 32vw, 500px);
+  height: clamp(200px, 60vh, 700px);
+  top: clamp(6%, 24%, 28%);
+  left: clamp(1rem, 5%, 6%);
 }
 
 /* Popup Crédits */
 .popup-credits {
-  width: 38vw;
-  height: 22vh;
-  top: 12%;
-  left: 28%;
+  width: clamp(400px, 50vw, 800px);
+  height: clamp(100px, 22vh, 240px);
+  top: clamp(8%, 12%, 15%);
+  left: clamp(1rem, 20%, 30%);
 }
 
 /* Popup Mouche */
 .popup-mouche {
-  width: clamp(180px, 20vw, 400px);
-  height: 70vh;
-  top: 2%;
-  right: 8%;
+  width: clamp(160px, 18vw, 400px);
+  height: clamp(200px, 70vh, 800px);
+  top: clamp(1%, 2%, 4%);
+  right: clamp(1rem, 8%, 10%);
 }
 
 /* Popup Itinéraire */
 .popup-itineraire {
-  width: 50vw;
-  height: 36vh;
-  bottom: 4%;
-  right: 16%;
+  width: clamp(320px, 55vw, 800px);
+  height: clamp(200px, 36vh, 490px);
+  bottom: clamp(2%, 4%, 6%);
+  right: clamp(1rem, 10%, 16%);
 }
 
-/* Sur mobile toutes les popups prennent toute la largeur et se superposent au même endroit */
+/* Sur mobile toutes les popups s'adaptent en pleine largeur */
 @media (max-width: 600px) {
-  .popup-lamachine,
-  .popup-itineraire,
-  .popup-mouche {
-    width: 90vw;
-    height: 70vh;
+  .popup-box {
+    width: calc(100vw - 2rem) !important;
+    max-height: 75vh;
+    left: 1rem !important;
+    right: 1rem !important;
+  }
+
+  .popup-machine {
     top: 10%;
-    left: 5%;
-    right: auto;
+    height: auto;
+    min-height: 40vh;
+  }
+
+  .popup-credits {
+    top: 12%;
+    height: auto;
+    min-height: 15vh;
+  }
+
+  .popup-mouche {
+    top: 8%;
+    height: auto;
+    min-height: 50vh;
+  }
+
+  .popup-itineraire {
+    bottom: 4%;
+    top: auto;
+    height: auto;
+    min-height: 25vh;
   }
 }
 
-/* Titre principal de la popup (nom du lieu) */
+/* Titre principal de la popup */
 .popup-box h2 {
   font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(16px, 4vw, 28px);
+  font-size: clamp(14px, 2.2vw, 28px);
   color: #000000;
   margin-bottom: 1rem;
 }
@@ -291,7 +314,7 @@
 /* Sous-titre (membres du collectif, etc.) */
 .popup-box h3 {
   font-family: 'Roberte', sans-serif;
-  font-size: clamp(16px, 3vw, 22px);
+  font-size: clamp(14px, 1.8vw, 22px);
   color: #000000;
   margin: 0;
   -webkit-text-stroke: 0.5px #000000;  /* Légère épaisseur sur les navigateurs webkit */
@@ -306,7 +329,7 @@
 /* Texte courant dans la popup */
 .popup-box p {
   font-family: 'GapSansBold', sans-serif;
-  font-size: clamp(8px, 3vw, 14px);
+  font-size: clamp(10px, 1vw, 16px);
   color: #000000;
   line-height: 1.6;
 }
@@ -316,8 +339,8 @@
   position: absolute;
   top: 12px;
   right: 16px;
-  font-family: 'GapSansBold', sans-serif;
+  font-family: 'BianzhidaiPearl', sans-serif;
   color: #000000;
   text-decoration: none;
-  font-size: 18px;
+  font-size: clamp(14px, 1.2vw, 18px);
 }
