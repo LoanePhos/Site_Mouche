@@ -1,0 +1,350 @@
+/* ============================================================
+                            RESET
+============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+                            FONTS
+   Placez vos fichiers dans un dossier /fonts/
+============================================================ */
+
+@font-face {
+  font-family: 'BianzhidaiMessy';
+  src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BianzhidaiPearl';
+  src: url('fonts/bianzhidai_noBG-Pearl.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GapSansBold';
+  src: url('fonts/gapsansbold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roberte';
+  src: url('fonts/Roberte-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* ============================================================
+                            BODY
+============================================================ */
+
+body {
+  background-color: #ffffff;
+}
+
+
+/* ============================================================
+                      BANNIÈRE HEADER
+============================================================ */
+
+.banner-header {
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+}
+
+.banner-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ============================================================
+                            TITRE
+============================================================ */
+
+.site-header {
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 3rem) 1rem clamp(1rem, 2vw, 2rem);
+}
+
+.site-title {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(3rem, 14vw, 9rem);
+  color: #000000;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  background-image: url(images/bleu_violet_2.png);
+}
+
+.site-tagline {
+  font-family: 'GapSansBold', sans-serif;
+  font-size: clamp(10px, 1.4vw, 16px);
+  color: #000000;
+  margin-top: 1rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ============================================================
+                        SÉPARATEURS
+============================================================ */
+
+.sep {
+  border: none;
+  margin: 0;
+}
+
+.sep--thin {
+  border: none;
+  margin: 0.5rem 0;
+}
+
+
+/* ============================================================
+                        BLOCS TEXTE
+============================================================ */
+
+.text-block {
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  margin: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2rem);
+}
+
+.text-block p {
+  font-family: 'GapSansBold', sans-serif;
+  font-size: clamp(10px, 1.3vw, 16px);
+  color: #000000;
+  line-height: 1.7;
+}
+
+.text-block strong {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(11px, 1.5vw, 18px);
+  font-weight: normal;
+}
+
+.text-block .highlight {
+  font-family: 'BianzhidaiMessy', sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* ============================================================
+                      BANNIÈRES IMAGE FINES
+   Bandes pleine largeur, hauteur réduite
+============================================================ */
+
+.img-banner {
+  width: 100%;
+  height: clamp(120px, 18vh, 220px);
+  overflow: hidden;
+  position: relative;
+}
+
+.img-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+
+/* ============================================================
+                        TITRES DE SECTION
+============================================================ */
+
+.section-title {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 3rem);
+  color: #000000;
+  text-align: center;
+  padding: clamp(1rem, 2vw, 1.5rem) 1rem 0.5rem;
+  letter-spacing: 0.06em;
+}
+
+
+/* ============================================================
+                          SECTION VIDÉO
+============================================================ */
+
+.video-section {
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.video-wrapper {
+  width: clamp(280px, 70%, 800px);
+  margin: 1.5rem auto 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-wrapper iframe,
+.video-wrapper video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+}
+
+.video-placeholder {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(12px, 1.5vw, 18px);
+  color: #000000;
+  text-align: center;
+  padding: clamp(2rem, 6vw, 4rem) 1rem;
+  letter-spacing: 0.2em;
+}
+
+
+/* ============================================================
+                          CARROUSEL
+============================================================ */
+
+.carousel-section {
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.carousel-track-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: clamp(200px, 40vh, 480px);
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-slide-label {
+  font-family: 'GapSansBold', sans-serif;
+  font-size: clamp(10px, 1vw, 14px);
+  color: #000000;
+  text-align: center;
+  padding: 0.6rem 1rem;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.carousel-btn {
+  background: none;
+  border: none;
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(12px, 1.5vw, 18px);
+  color: #000000;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border: none;
+  background: #cccccc;
+  cursor: pointer;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: #000000;
+}
+
+
+/* ============================================================
+                            FOOTER
+============================================================ */
+
+.site-footer {
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2rem);
+}
+
+.footer-label {
+  font-family: 'GapSansBold', sans-serif;
+  font-size: clamp(9px, 1vw, 13px);
+  color: #000000;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  margin-bottom: 0.4rem;
+}
+
+.footer-names {
+  font-family: 'Roberte', sans-serif;
+  font-size: clamp(12px, 1.6vw, 20px);
+  color: #000000;
+  line-height: 1.8;
+  -webkit-text-stroke: 0.5px #000000;
+}
+
+.footer-logos {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+.footer-logo {
+  height: clamp(24px, 3vw, 40px);
+  width: auto;
+  display: block;
+}
+
+
+/* ============================================================
+                          RESPONSIVE
+============================================================ */
+
+@media (max-width: 600px) {
+  .text-block {
+    margin: 0.5rem;
+  }
+
+  .video-wrapper {
+    width: calc(100% - 1rem);
+  }
+
+  .carousel-slide img {
+    height: 220px;
+  }
+}

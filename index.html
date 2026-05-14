@@ -2,7 +2,9 @@
 <html>
 
 <head>
-  <title>Le Ludospace</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Anarchiveuse</title>
   <link rel="stylesheet" href="Style_Main.css">
 </head>
 
@@ -10,21 +12,17 @@
 
 <header class="topnav">
   <div class="nav-item">
-    <a href="index.html" data-text="Archives ▾">Archives ▾</a>
+    <a href="index.html" data-text="Anarchives">Anarchives</a>
     <div class="dropdown">
       <a href="#" data-popup-archive>Fête de l'Humanité</a>
-      <a href="#" data-popup-archive>Biennale De Renava</a>
-      <a href="#" data-popup-archive>École Estienne</a>
     </div>
   </div>
 
   <div class="nav-item">
-    <a href="#" data-text="Ludospace ▾">Ludospace ▾</a>
+    <a href="#" data-text="L'Anarchiveuse">L'Anarchiveuse</a>
     <div class="dropdown">
       <a href="#" data-popup="popup-machine">Machine</a>
-      <a href="#" data-popup="popup-itineraire">Itinéraire</a>
       <a href="#" data-popup="popup-mouche">Mouche</a>
-      <a href="#" data-popup="popup-credits">Crédits</a>
     </div>
   </div>
 </header>
@@ -132,24 +130,15 @@
     </div>
   </main>
 
-  <!-- POPUPS LUDOSPACE -->
+  <!-- POPUPS ANARCHIVEUSE -->
   <div class="popup-box popup-machine" id="popup-machine">
     <a href="#" class="popup-close">✕</a>
     <h2>La Machine</h2>
     <p>
-      Le Ludospace est un objet-espace de projection et de manipulation d’archives audiovisuelles qui transforme le·a visiteur·se en spect-acteur·ice.
+      L'Anarchiveuse est un objet-espace de projection et de manipulation d’archives audiovisuelles qui transforme le·a visiteur·se en spect-acteur·ice.
       Il propose de faire cohabiter un dispositif technique complexe avec des usages amateurs, en rendant accessible la manipulation d’images par le biais d’outils de VJing modifiés.
       Dans ce cadre, des images dites “insignifiantes” deviennent le point de départ de nouvelles mises en récit.
       Le projet s’inscrit dans une démarche de design, recherche et création qui vise à inventer du signifiant à partir d’archives existantes, en les activant dans des contextes performatifs et collectifs.</p>
-  </div>
-
-  <div class="popup-box popup-itineraire" id="popup-itineraire">
-    <a href="#" class="popup-close">✕</a>
-    <h2>Itinéraire</h2>
-    <h3>Prochains lieux :</h3>
-    <p>• École Estienne:</p>
-    <p>• Biennale De Renava</p>
-    <p>• Fête de l'Humanité</p>
   </div>
 
   <div class="popup-box popup-mouche" id="popup-mouche">
@@ -160,19 +149,11 @@
     <p>Les outils numériques y sont envisagés comme des espaces d'expérimentation, de dialogue et de mise en lisibilité d'images peu partagées.</p>
   </div>
 
-  <div class="popup-box popup-credits" id="popup-credits">
-    <a href="#" class="popup-close">✕</a>
-    <h2>Crédits</h2>
-    <h3>©2026 Collectif Mouche</h3>
-    <p>Ornella Antony • Gaspard Calais • Loane De Almeida Costa • Ulysse Migeat</p>
-    <p>DSAA Design et Création en environnements Numériques • École Estienne</p>
-  </div>
-
   <script>
-    const LUDOSPACE_IDS = ['popup-machine', 'popup-itineraire', 'popup-mouche'];
+    const _IDS = ['popup-machine', 'popup-itineraire', 'popup-mouche'];
 
-    function closeAllLudospace() {
-      LUDOSPACE_IDS.forEach(id => {
+    function closeAllAnarchiveuse() {
+      ANARCHIVEUSE_IDS.forEach(id => {
         document.getElementById(id).classList.remove('is-open');
       });
     }
@@ -187,7 +168,7 @@
         return;
       }
 
-      // Liens Ludospace (Machine / Itinéraire / Mouche)
+      // Liens Anarchiveuse (Machine / Itinéraire / Mouche)
       const ludoTrigger = e.target.closest('[data-popup]');
       if (ludoTrigger) {
         e.preventDefault();
@@ -199,10 +180,10 @@
         return;
       }
 
-      // Liens Archives : fermer toutes les popups Ludospace
+      // Liens Archives : fermer toutes les popups Anarchiveuse
       const archiveTrigger = e.target.closest('[data-popup-archive]');
       if (archiveTrigger) {
-        closeAllLudospace();
+        closeAllAnarchiveuse();
         // La navigation vers la page archive se fait normalement (href)
       }
 
