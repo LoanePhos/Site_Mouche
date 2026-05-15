@@ -8,141 +8,193 @@
 </head>
 <body>
 
-  <!-- ══════════ BANNIÈRE IMAGE HAUTE ══════════ -->
-  <div class="banner-header">
-    <img src="images/bleu_violet_2.png" alt="Bannière principale" />
-  </div>
-
-
   <!-- ══════════ TITRE & TAGLINE ══════════ -->
-  <header class="site-header">
-    <h1 class="site-title">MOUCHE</h1>
+  <header class="hero-banner">
     <p class="site-tagline">
       Mouche est un collectif pluridisciplinaire d'exploration de nouvelles narratives.
     </p>
   </header>
 
-  <!-- ══════════ BANNIÈRE IMAGE FINE 1 ══════════ -->
- 
+  <!-- ══════════ BANNIÈRE IMAGE 1 ══════════ -->
   <div class="img-banner img-banner--vert">
-    <img src="images/vertviolet.png" alt="Bannière 1" />
+    <img src="images/vertviolet.webp" alt="Bannière 1" />
   </div>
 
-
-  <!-- ══════════ BLOC TEXTE 1 ══════════ -->
+  <!-- ══════════ TEXTE 1 ══════════ -->
   <div class="text-block text-block--violet">
-    <p>
-      À travers la curation d'archives, nous développons des protocoles de création
+    <p>À travers la curation d'archives, nous développons des protocoles de création
       qui questionnent les formes de narration dominantes et valorisent des récits invisibilisés
-      dans lesquels les spectateurices deviennent
-      <strong>co-acteur..ices et co-créateur..ices.</strong>
+      dans lesquels les spectateurices deviennent <strong>co-acteur•ices</strong> et <strong>co-créateur•ices.</strong>
     </p>
   </div>
 
-  <!-- ══ BLOC TEXTE 2 ══════════════════════════════════════════ -->
-  <div class="text-block text-block--vert">
-    <p>
-      Les outils numériques y sont envisagés comme des <span class="highlight">espaces</span>
-      d'<strong>expérimentation</strong>, de dialogue et de <strong>mise en œuvre</strong>
-      d'images peu partagées.
-    </p>
-  </div>
-
-
-  <!-- ══ BANNIÈRE IMAGE FINE 2 ═════════════════════════════════
-  ═══════════════════════════════════════════════════════════════ -->
-  <div class="img-banner img-banner--violet">
-    <img src="images/marronvert.png" alt="Bannière 2" />
-  </div>
-
-
-  <!-- ══ SECTION VIDÉO ══════════════════════════════════════════
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="video-section">
-    <h2 class="section-title section-title--cyan">Manifeste vidéo</h2>
-    <hr class="sep sep--thin" />
-
-    <div class="video-wrapper">
-    <iframe
-      class="video-frame"
-      src="https://player.vimeo.com/video/4322716?autoplay=1&muted=1&loop=1"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-    </div>
-  </section>
-
-
-  <!-- ══ CARROUSEL ══════════════════════════════════════════════
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="carousel-section">
-    <h2 class="section-title section-title--violet">Exposition du manifeste au CENTQUATRE</h2>
-    <hr class="sep sep--thin" />
-
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="carousel-track">
-
-        <div class="carousel-slide">
-          <img src="images/violet.png" alt="Image 01" />
-          <p class="carousel-slide-label">Image — Description</p>
-        </div>
-
-        <div class="carousel-slide">
-          <img src="images/vertmarron.png" alt="Image 02" />
-          <p class="carousel-slide-label">Image — Description</p>
-        </div>
-
-        <div class="carousel-slide">
-          <img src="images/Test_2.jpg" alt="Image 03" />
-          <p class="carousel-slide-label">Image — Description</p>
-        </div>
-
+  <!-- ══════════ TEXTE ET VIDEO ══════════ -->
+  <div class="section-banner">
+    <img src="images/Fond_Video.webp" alt="" />
+    <div class="section-content">
+      <div class="section-text">
+        <p>Les outils numériques y sont envisagés comme des 
+          <span class="highlight">espaces d'expérimentation</span>, 
+          de dialogue et de <strong>mise en œuvre</strong> 
+          d'images peu partagées.</p>
+      </div>
+      <h2 class="section-titre">Manifeste vidéo</h2>
+      <div class="video-wrapper">
+        <iframe src="https://player.vimeo.com/video/4322716" 
+                frameborder="0" allowfullscreen>
+        </iframe>
       </div>
     </div>
+  </div>
 
-    <div class="carousel-controls">
+  <!-- ══ CARROUSEL ══════════════════════════════════════════════ -->
+  <section class="carousel-section">
+    <h2 class="section-title">Exposition du manifeste au CENTQUATRE</h2>
+
+    <div class="carousel-outer">
       <button class="carousel-btn" id="prev-btn">◀</button>
-      <div class="carousel-dots" id="carousel-dots">
-        <button class="carousel-dot active"></button>
-        <button class="carousel-dot"></button>
-        <button class="carousel-dot"></button>
+      <div class="carousel-window">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide">
+            <img src="images/vertmarron.webp" alt="Image 01" />
+            <p class="carousel-slide-label">Image — Description</p>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/vertmarron.webp" alt="Image 02" />
+            <p class="carousel-slide-label">Image — Description</p>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/vertmarron.webp" alt="Image 03" />
+            <p class="carousel-slide-label">Image — Description</p>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/vertmarron.webp" alt="Image 04" />
+            <p class="carousel-slide-label">Image — Description</p>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/vertmarron.webp" alt="Image 05" />
+            <p class="carousel-slide-label">Image — Description</p>
+          </div>
+        </div>
       </div>
       <button class="carousel-btn" id="next-btn">▶</button>
     </div>
   </section>
 
-  <!-- ══ SCRIPT CARROUSEL ══════════════════════════════════════ -->
-  <script>
-    const track  = document.getElementById('carousel-track');
-    const dots   = document.querySelectorAll('.carousel-dot');
-    const slides = track.querySelectorAll('.carousel-slide');
-    let current  = 0;
-    const total  = slides.length;
+  <!-- ══ LIGHTBOX ══════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-box">
+      <button class="lightbox-close" id="lightbox-close">✕</button>
+      <button class="lightbox-nav" id="lightbox-prev">◀</button>
+      <img id="lightbox-img" src="" alt="" />
+      <button class="lightbox-nav" id="lightbox-next">▶</button>
+    </div>
+  </div>
 
-    function goTo(index) {
-      current = (index + total) % total;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      dots.forEach(function(d, i) {
-        d.classList.toggle('active', i === current);
-      });
+  <!-- ══ SCRIPT ════════════════════════════════════════════════ -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    const track = document.getElementById('carousel-track');
+    const original = Array.from(track.querySelectorAll('.carousel-slide'));
+    const GAP = 24;
+    let current = original.length;
+    let isAnimating = false;
+
+    original.forEach(s => track.appendChild(s.cloneNode(true)));
+    original.forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
+
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+
+    function getSlideWidth() {
+      return slides[0].offsetWidth + GAP;
     }
 
-    document.getElementById('next-btn').addEventListener('click', function() { goTo(current + 1); });
-    document.getElementById('prev-btn').addEventListener('click', function() { goTo(current - 1); });
-    dots.forEach(function(dot, i) { dot.addEventListener('click', function() { goTo(i); }); });
+    function setPosition(animate) {
+      track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+      track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
+    }
 
-    // Autoplay — commentez cette ligne pour désactiver
-    setInterval(function() { goTo(current + 1); }, 4500);
+    setTimeout(() => setPosition(false), 50);
+
+    function goTo(index) {
+      if (isAnimating) return;
+      isAnimating = true;
+      current = index;
+      setPosition(true);
+    }
+
+    track.addEventListener('transitionend', () => {
+      isAnimating = false;
+      const total = slides.length;
+      if (current >= total - original.length) {
+        current = original.length;
+        setPosition(false);
+      } else if (current < original.length) {
+        current = total - original.length * 2;
+        setPosition(false);
+      }
+    });
+
+    document.getElementById('next-btn').addEventListener('click', () => goTo(current + 1));
+    document.getElementById('prev-btn').addEventListener('click', () => goTo(current - 1));
+    setInterval(() => goTo(current + 1), 4500);
+
+    // ── Lightbox ──────────────────────────────────────────────
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const images = original.map(s => ({
+      src: s.querySelector('img') ? s.querySelector('img').src : '',
+      alt: s.querySelector('img') ? s.querySelector('img').alt : ''
+    }));
+    let lightboxIndex = 0;
+
+    function openLightbox(index) {
+      lightboxIndex = index;
+      lightboxImg.src = images[lightboxIndex].src;
+      lightboxImg.alt = images[lightboxIndex].alt;
+      lightbox.classList.add('active');
+    }
+
+    function lightboxNav(dir) {
+      lightboxIndex = (lightboxIndex + dir + images.length) % images.length;
+      lightboxImg.src = images[lightboxIndex].src;
+      lightboxImg.alt = images[lightboxIndex].alt;
+    }
+
+    track.addEventListener('click', function(e) {
+      const slide = e.target.closest('.carousel-slide');
+      if (!slide) return;
+      const img = slide.querySelector('img');
+      if (!img) return;
+      const idx = original.findIndex(s => {
+        const si = s.querySelector('img');
+        return si && si.src === img.src;
+      });
+      openLightbox(idx >= 0 ? idx : 0);
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('active'));
+    document.getElementById('lightbox-prev').addEventListener('click', () => lightboxNav(-1));
+    document.getElementById('lightbox-next').addEventListener('click', () => lightboxNav(1));
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+
+  });
   </script>
 
-    <!-- ══════════ BLOC TEXTE 1 ══════════ -->
-  <div class="text-block text-block--violet">
+  <!-- ══════════ FOOTER ══════════ -->
+  <div class="footer-block">
     <p>Imaginé par</p>
-    <h4>Ornella Antony</h4>
-    <h4>Gaspard Calais</h4>
-    <h4>Loane De Almeida Costa</h4>
-    <h4>Ulysse Migeat</h4>
-    <img src="images/marronvert.png" alt="Bannière 2" />
+    <h4><strong>Ornella Antony</strong></h4>
+    <h4><span class="highlight">Gaspard Calais</span></h4>
+    <h4><strong>Loane De Almeida Costa</strong></h4>
+    <h4><span class="highlight">Ulysse Migeat</span></h4>
+    <div class="footer-block-logos">
+      <img src="images/logo_mouche_traits.webp" alt="Logo Mouche" />
+      <img src="images/DCN.webp" alt="Logo DCN" />
+    </div>
   </div>
 
 </body>

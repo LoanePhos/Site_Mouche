@@ -27,8 +27,8 @@
 }
 
 @font-face {
-  font-family: 'GapSansBold';
-  src: url('fonts/gapsansbold-webfont.woff') format('woff');
+  font-family: 'Garabosse';
+  src: url('fonts/Garabosse-Perle.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -46,8 +46,7 @@
 ============================================================ */
 
 .topnav {
-  background-color: #ffffff;                  /* Couleur du fond */
-  mix-blend-mode: screen;                       /* Mode de fusion */
+  background-color: #ffffff;                  /* Couleur du fond */                       /* Mode de fusion */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +122,7 @@
   width: auto;
   line-height: normal;
   padding: 12px 1.2vw;                           /* Écarts entre les items */
-  font-family: 'GapSansBold', sans-serif;
+  font-family: 'Garabosse', sans-serif;
   color: #000000;
   text-decoration: none;
   font-size: clamp(10px, 1.3vw, 16px);           /* Taille responsive de la typo */
@@ -205,16 +204,18 @@
   font-size: clamp(14px, 1.5vw, 24px);          /* Taille responsive de la typo */
   color: #ffffff;
   margin: 0;
-  opacity: 60%;
+  -webkit-text-stroke: 6px #463838;
+  paint-order: stroke fill;
 }
 
 /* Sous-titre dans l'overlay (lieu / événement) */
 .grille a .overlay p {
-  font-family: 'GapSansBold', sans-serif;
+  font-family: 'Garabosse', sans-serif;
   font-size: clamp(11px, 1vw, 16px);            /* Taille responsive de la typo */
   color: #ffffff;
   margin: 0;
-  opacity: 60%;
+  -webkit-text-stroke: 6px #463838;
+  paint-order: stroke fill;
 }
 
 
@@ -223,8 +224,7 @@
 ============================================================ */
 .popup-box {
   display: none;                        /* Caché par défaut */
-  background: #ffffff;
-  mix-blend-mode: difference;           /* Mode de fusion */
+  background: #ffffff;        /* Mode de fusion */
   border: 3.6px dotted black;
   padding: clamp(0.75rem, 2vw, 2rem);
   overflow-y: auto;                     /* Scroll interne si le contenu dépasse */
@@ -283,24 +283,12 @@
     min-height: 40vh;
   }
 
-  .popup-credits {
-    top: 12%;
-    height: auto;
-    min-height: 15vh;
-  }
-
   .popup-mouche {
     top: 8%;
     height: auto;
     min-height: 50vh;
   }
 
-  .popup-itineraire {
-    bottom: 4%;
-    top: auto;
-    height: auto;
-    min-height: 25vh;
-  }
 }
 
 /* Titre principal de la popup */
@@ -328,7 +316,7 @@
 
 /* Texte courant dans la popup */
 .popup-box p {
-  font-family: 'GapSansBold', sans-serif;
+  font-family: 'Garabosse', sans-serif;
   font-size: clamp(10px, 1vw, 16px);
   color: #000000;
   line-height: 1.6;
@@ -343,4 +331,19 @@
   color: #000000;
   text-decoration: none;
   font-size: clamp(14px, 1.2vw, 18px);
+}
+
+/* Lien dans la popup Mouche */
+.popup-mouche-lien {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(11px, 1.3vw, 18px);
+  color: #000000;
+  text-decoration: none;
+  background-color: #463838;
+}
+
+.popup-mouche-lien:hover {
+  font-family: 'BianzhidaiMessy', sans-serif;
 }

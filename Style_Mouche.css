@@ -10,12 +10,11 @@
 
 /* ============================================================
                             FONTS
-   Placez vos fichiers dans un dossier /fonts/
 ============================================================ */
 
 @font-face {
-  font-family: 'BianzhidaiMessy';
-  src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
+  font-family: 'BianzhidaiCloud';
+  src: url('fonts/bianzhidai_noBG-Cloud.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -28,8 +27,8 @@
 }
 
 @font-face {
-  font-family: 'GapSansBold';
-  src: url('fonts/gapsansbold-webfont.woff') format('woff');
+  font-family: 'Garabosse';
+  src: url('fonts/Garabosse-Perle.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -48,71 +47,34 @@
 
 body {
   background-color: #ffffff;
-}
-
-
-/* ============================================================
-                      BANNIÈRE HEADER
-============================================================ */
-
-.banner-header {
-  width: 100%;
-  height: 40vh;
-  overflow: hidden;
-}
-
-.banner-header img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
+  overflow-x: hidden;
 }
 
 /* ============================================================
                             TITRE
 ============================================================ */
 
-.site-header {
-  text-align: center;
-  padding: clamp(1.5rem, 4vw, 3rem) 1rem clamp(1rem, 2vw, 2rem);
-}
-
-.site-title {
-  font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(3rem, 14vw, 9rem);
-  color: #000000;
-  line-height: 0.95;
-  letter-spacing: 0.04em;
-  background-image: url(images/bleu_violet_2.png);
+.hero-banner {
+  background-image: url(images/Header_Mouche.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 94vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 80vh;
 }
 
 .site-tagline {
-  font-family: 'GapSansBold', sans-serif;
-  font-size: clamp(10px, 1.4vw, 16px);
+  font-family: 'Garabosse', sans-serif;
+  font-size: clamp(26px, 2vw, 36px);
+  text-align: center;
   color: #000000;
-  margin-top: 1rem;
   line-height: 1.5;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 80vw;
+  -webkit-text-stroke: 6px #95D8EF;
+  paint-order: stroke fill;
 }
-
-
-/* ============================================================
-                        SÉPARATEURS
-============================================================ */
-
-.sep {
-  border: none;
-  margin: 0;
-}
-
-.sep--thin {
-  border: none;
-  margin: 0.5rem 0;
-}
-
 
 /* ============================================================
                         BLOCS TEXTE
@@ -125,33 +87,39 @@ body {
 }
 
 .text-block p {
-  font-family: 'GapSansBold', sans-serif;
-  font-size: clamp(10px, 1.3vw, 16px);
+  font-family: 'Garabosse', sans-serif;
+  font-weight: bold;
+  font-size: clamp(22px, 1.8vw, 36px);
   color: #000000;
   line-height: 1.7;
+  -webkit-text-stroke: 6px #B6F772;
+  paint-order: stroke fill;
 }
 
 .text-block strong {
   font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(11px, 1.5vw, 18px);
   font-weight: normal;
+  font-size: clamp(22px, 1.8vw, 36px);
+  background-color: #B6F772;
+  -webkit-text-stroke: 0;
 }
 
 .text-block .highlight {
-  font-family: 'BianzhidaiMessy', sans-serif;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  font-family: 'BianzhidaiCloud', sans-serif;
+  font-weight: normal;
+  font-size: clamp(26px, 1.8vw, 36px);
+  background-color: #B6F772;
+  -webkit-text-stroke: 0;
 }
 
 
 /* ============================================================
-                      BANNIÈRES IMAGE FINES
-   Bandes pleine largeur, hauteur réduite
+                    BANNIÈRES IMAGE FINES
 ============================================================ */
 
 .img-banner {
   width: 100%;
-  height: clamp(120px, 18vh, 220px);
+  height: clamp(200px, 30vh, 400px);
   overflow: hidden;
   position: relative;
 }
@@ -164,172 +132,217 @@ body {
   display: block;
 }
 
-
-/* ============================================================
-                        TITRES DE SECTION
-============================================================ */
-
-.section-title {
-  font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(1.4rem, 4vw, 3rem);
-  color: #000000;
-  text-align: center;
-  padding: clamp(1rem, 2vw, 1.5rem) 1rem 0.5rem;
-  letter-spacing: 0.06em;
-}
-
-
 /* ============================================================
                           SECTION VIDÉO
 ============================================================ */
 
-.video-section {
-  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+.section-banner {
+  position: relative;
+  width: 100%;
+}
+
+.section-banner img {
+  width: 100%;
+  height: clamp(110vh, 130vh, 160vh);
+  object-fit: cover;
+  display: block;
+}
+
+.section-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+}
+
+.section-text {
+  margin-bottom: 2rem;
+}
+
+.section-text p {
+  font-family: 'Garabosse', sans-serif;
+  font-weight: bold;
+  font-size: clamp(22px, 1.8vw, 36px);
+  color: #000000;
+  line-height: 1.7;
+  -webkit-text-stroke: 6px #B6F772;
+  paint-order: stroke fill;
+  padding-top: 12vh;
+  padding-bottom: 6vh;
+}
+
+.section-text strong {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-weight: normal;
+  background-color: #B6F772;
+  -webkit-text-stroke: 0;
+}
+
+.section-text .highlight {
+  font-family: 'BianzhidaiCloud', sans-serif;
+  font-weight: normal;
+  background-color: #B6F772;
+  -webkit-text-stroke: 0;
+}
+
+.section-titre {
+  display: inline-block;
+  font-family: 'BianzhidaiCloud', sans-serif;
+  font-weight: normal;
+  font-size: clamp(26px, 3vw, 48px);
+  background-color: #95D8EF;
+  margin-bottom: 2rem;
 }
 
 .video-wrapper {
-  width: clamp(280px, 70%, 800px);
-  margin: 1.5rem auto 0;
-  overflow: hidden;
-  position: relative;
-}
-
-.video-wrapper iframe,
-.video-wrapper video {
-  display: block;
-  width: 100%;
+  width: 80%;
   aspect-ratio: 16 / 9;
-  border: none;
+  margin: 0 auto;
+  padding-bottom: 10%;
 }
 
-.video-placeholder {
-  font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(12px, 1.5vw, 18px);
-  color: #000000;
-  text-align: center;
-  padding: clamp(2rem, 6vw, 4rem) 1rem;
-  letter-spacing: 0.2em;
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
 }
-
 
 /* ============================================================
                           CARROUSEL
 ============================================================ */
 
 .carousel-section {
-  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
-}
-
-.carousel-track-wrap {
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.carousel-slide {
-  min-width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: clamp(200px, 40vh, 480px);
-  object-fit: cover;
-  display: block;
-}
-
-.carousel-slide-label {
-  font-family: 'GapSansBold', sans-serif;
-  font-size: clamp(10px, 1vw, 14px);
-  color: #000000;
+  padding: clamp(2rem, 4vw, 4rem) 0;
   text-align: center;
-  padding: 0.6rem 1rem;
-}
-
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 1rem;
 }
 
 .carousel-btn {
   background: none;
   border: none;
   font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(12px, 1.5vw, 18px);
+  font-size: clamp(16px, 2vw, 28px);
   color: #000000;
-  width: 40px;
-  height: 40px;
   cursor: pointer;
+  flex-shrink: 0;
+  z-index: 10;
+  padding: 0 1rem;
+}
+
+.carousel-track-wrap {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  width: 80%;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  /* PAS de overflow: hidden ici */
+}
+
+.carousel-slide {
+  flex: 0 0 calc(33.333% - 1rem);
+  cursor: pointer;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  display: block;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
   align-items: center;
   justify-content: center;
 }
 
-.carousel-dots {
+.lightbox.active {
   display: flex;
-  gap: 0.5rem;
 }
-
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  border: none;
-  background: #cccccc;
-  cursor: pointer;
-  padding: 0;
-}
-
-.carousel-dot.active {
-  background: #000000;
-}
-
 
 /* ============================================================
                             FOOTER
 ============================================================ */
 
-.site-footer {
-  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2rem);
+.footer-block {
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: left;
 }
 
-.footer-label {
-  font-family: 'GapSansBold', sans-serif;
-  font-size: clamp(9px, 1vw, 13px);
+.footer-block p {
+  font-family: 'Garabosse', sans-serif;
+  font-weight: bold;
+  font-size: clamp(14px, 1.2vw, 20px);
   color: #000000;
-  letter-spacing: 0.2em;
-  text-transform: lowercase;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+  -webkit-text-stroke: 6px #E967DB;
+  paint-order: stroke fill;
 }
 
-.footer-names {
-  font-family: 'Roberte', sans-serif;
-  font-size: clamp(12px, 1.6vw, 20px);
-  color: #000000;
-  line-height: 1.8;
-  -webkit-text-stroke: 0.5px #000000;
+.footer-block h4 {
+  font-size: clamp(18px, 2vw, 32px);
+  font-weight: normal;
+  line-height: 1;
 }
 
-.footer-logos {
+.footer-block strong {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-weight: normal;
+  -webkit-text-stroke: 6px #E967DB;
+  paint-order: stroke fill;
+  background-color: #E967DB;
+}
+
+.footer-block .highlight {
+  font-family: 'BianzhidaiCloud', sans-serif;
+  font-weight: normal;
+  -webkit-text-stroke: 6px #E967DB;
+  paint-order: stroke fill;
+  background-color: #E967DB;
+}
+
+.footer-block-logos {
   display: flex;
-  gap: 1rem;
   align-items: center;
-  margin-top: 1.2rem;
+  justify-content: left;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.footer-logo {
-  height: clamp(24px, 3vw, 40px);
+.footer-block-logos img {
+  height: clamp(30px, 4vw, 60px);
   width: auto;
-  display: block;
 }
 
+.carousel-track-wrap {
+  min-height: 300px;
+  background: yellow;
+}
+
+.carousel-track {
+  background: pink;
+  min-height: 200px;
+}
+
+.carousel-slide {
+  background: red !important;
+  min-height: 200px !important;
+  min-width: 200px !important;
+}
 
 /* ============================================================
                           RESPONSIVE
