@@ -215,8 +215,31 @@ body {
 .carousel-section {
   padding: clamp(2rem, 4vw, 4rem) 0;
   text-align: center;
+  overflow: hidden; /* bloque le scroll horizontal */
 }
 
+/* Titre stylisé du carrousel */
+.carousel-title {
+  display: inline-block;
+  font-family: 'BianzhidaiCloud', sans-serif;
+  font-weight: normal;
+  font-size: clamp(20px, 2.5vw, 30px);
+  background-color: #9583FF;
+  padding: 0.2em 0.5em;
+  margin-bottom: clamp(1.5rem, 3vw, 3rem);
+  letter-spacing: 0.02em;
+}
+
+/* Conteneur principal : flèches à gauche et droite, centré */
+.carousel-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+}
+
+/* Boutons flèches alignés verticalement au centre du carrousel */
 .carousel-btn {
   background: none;
   border: none;
@@ -227,30 +250,36 @@ body {
   flex-shrink: 0;
   z-index: 10;
   padding: 0 1rem;
+  line-height: 1;
+  align-self: center;
 }
 
-.carousel-track-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 2rem 0;
+/* Fenêtre visible du carrousel — masque ce qui dépasse, sans dégradé */
+.carousel-window {
   overflow: hidden;
-  width: 100%;
+  width: 90%;
 }
 
+/* Track défilant */
 .carousel-track {
   display: flex;
   gap: 1.5rem;
-  width: 80%;
   flex-wrap: nowrap;
-  flex-shrink: 0;
-  /* PAS de overflow: hidden ici */
 }
 
+/* Slide : 3 visibles sur desktop — toujours entières, pas de dégradé */
 .carousel-slide {
   flex: 0 0 calc(33.333% - 1rem);
   cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: scale(0.95);
+}
+
+/* Slide actif (centre) */
+.carousel-slide.active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .carousel-slide img {
@@ -260,11 +289,13 @@ body {
   display: block;
 }
 
+/* ── Lightbox ──────────────────────────────────────────────── */
+
 .lightbox {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 9999;
   align-items: center;
   justify-content: center;
@@ -272,6 +303,67 @@ body {
 
 .lightbox.active {
   display: flex;
+}
+
+/* Image centrée à 90% de l'écran */
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Bouton fermer — toujours en haut à droite, fixe */
+.lightbox-close {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #ffffff;
+  font-size: 1.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: background 0.2s;
+}
+
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Flèches navigation lightbox — fixes sur les côtés, indépendantes de l'image */
+.lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  z-index: 10000;
+}
+
+.lightbox-nav:hover {
+  opacity: 1;
+}
+
+#lightbox-prev {
+  left: 0.5rem;
+}
+
+#lightbox-next {
+  right: 0.5rem;
 }
 
 /* ============================================================
@@ -328,26 +420,22 @@ body {
   width: auto;
 }
 
-.carousel-track-wrap {
-  min-height: 300px;
-  background: yellow;
-}
-
-.carousel-track {
-  background: pink;
-  min-height: 200px;
-}
-
-.carousel-slide {
-  background: red !important;
-  min-height: 200px !important;
-  min-width: 200px !important;
-}
-
 /* ============================================================
                           RESPONSIVE
 ============================================================ */
 
+/* Tablette : 2 slides visibles entières */
+@media (max-width: 900px) {
+  .carousel-window {
+    width: 92%;
+  }
+
+  .carousel-slide {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+/* Mobile : 1 slide visible entière */
 @media (max-width: 600px) {
   .text-block {
     margin: 0.5rem;
@@ -357,7 +445,19 @@ body {
     width: calc(100% - 1rem);
   }
 
+  .carousel-window {
+    width: 90%;
+  }
+
+  .carousel-slide {
+    flex: 0 0 calc(100% - 0.75rem);
+  }
+
   .carousel-slide img {
     height: 220px;
+  }
+
+  .carousel-btn {
+    padding: 0 0.5rem;
   }
 }

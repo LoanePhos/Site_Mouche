@@ -40,7 +40,7 @@
       </div>
       <h2 class="section-titre">Manifeste vidéo</h2>
       <div class="video-wrapper">
-        <iframe src="https://player.vimeo.com/video/4322716" 
+        <iframe src="https://player.vimeo.com/video/1192652286" 
                 frameborder="0" allowfullscreen>
         </iframe>
       </div>
@@ -49,7 +49,7 @@
 
   <!-- ══ CARROUSEL ══════════════════════════════════════════════ -->
   <section class="carousel-section">
-    <h2 class="section-title">Exposition du manifeste au CENTQUATRE</h2>
+    <h2 class="section-title carousel-title">Exposition du manifeste au CENTQUATRE</h2>
 
     <div class="carousel-outer">
       <button class="carousel-btn" id="prev-btn">◀</button>
@@ -57,23 +57,15 @@
         <div class="carousel-track" id="carousel-track">
           <div class="carousel-slide">
             <img src="images/vertmarron.webp" alt="Image 01" />
-            <p class="carousel-slide-label">Image — Description</p>
           </div>
           <div class="carousel-slide">
-            <img src="images/vertmarron.webp" alt="Image 02" />
-            <p class="carousel-slide-label">Image — Description</p>
+            <img src="images/rosevert.webp" alt="Image 02" />
           </div>
           <div class="carousel-slide">
             <img src="images/vertmarron.webp" alt="Image 03" />
-            <p class="carousel-slide-label">Image — Description</p>
           </div>
           <div class="carousel-slide">
-            <img src="images/vertmarron.webp" alt="Image 04" />
-            <p class="carousel-slide-label">Image — Description</p>
-          </div>
-          <div class="carousel-slide">
-            <img src="images/vertmarron.webp" alt="Image 05" />
-            <p class="carousel-slide-label">Image — Description</p>
+            <img src="images/rosevert.webp" alt="Image 04" />
           </div>
         </div>
       </div>
@@ -83,12 +75,10 @@
 
   <!-- ══ LIGHTBOX ══════════════════════════════════════════════ -->
   <div class="lightbox" id="lightbox">
-    <div class="lightbox-box">
-      <button class="lightbox-close" id="lightbox-close">✕</button>
-      <button class="lightbox-nav" id="lightbox-prev">◀</button>
-      <img id="lightbox-img" src="" alt="" />
-      <button class="lightbox-nav" id="lightbox-next">▶</button>
-    </div>
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <button class="lightbox-nav" id="lightbox-prev">◀</button>
+    <img id="lightbox-img" src="" alt="" />
+    <button class="lightbox-nav" id="lightbox-next">▶</button>
   </div>
 
   <!-- ══ SCRIPT ════════════════════════════════════════════════ -->
@@ -113,6 +103,21 @@
     function setPosition(animate) {
       track.style.transition = animate ? 'transform 0.5s ease' : 'none';
       track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
+      updateActiveSlide();
+    }
+
+    function getVisibleCount() {
+      const windowWidth = document.querySelector('.carousel-window').offsetWidth;
+      const slideWidth = slides[0].offsetWidth;
+      return Math.round(windowWidth / (slideWidth + GAP));
+    }
+
+    function updateActiveSlide() {
+      const visible = getVisibleCount();
+      const centerOffset = Math.floor(visible / 2);
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === current + centerOffset);
+      });
     }
 
     setTimeout(() => setPosition(false), 50);
@@ -154,6 +159,7 @@
       lightboxImg.src = images[lightboxIndex].src;
       lightboxImg.alt = images[lightboxIndex].alt;
       lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
     function lightboxNav(dir) {
@@ -174,11 +180,24 @@
       openLightbox(idx >= 0 ? idx : 0);
     });
 
-    document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('active'));
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
     document.getElementById('lightbox-prev').addEventListener('click', () => lightboxNav(-1));
     document.getElementById('lightbox-next').addEventListener('click', () => lightboxNav(1));
     lightbox.addEventListener('click', function(e) {
-      if (e.target === lightbox) lightbox.classList.remove('active');
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+      if (e.key === 'ArrowRight') lightboxNav(1);
+      if (e.key === 'Escape') closeLightbox();
     });
 
   });
