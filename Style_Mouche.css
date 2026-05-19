@@ -40,6 +40,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'BianzhidaiMessy';
+  src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 /* ============================================================
                             BODY
@@ -461,3 +468,60 @@ body {
     padding: 0 0.5rem;
   }
 }
+
+/* ============================================================
+                          NAV
+============================================================ */
+
+.topnav {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(500px, 64vw, 680px);
+  height: 6vh;
+  position: fixed;
+  top: 8%;
+  left: 50%;   
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  border: 3.6px dotted #463838;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item > a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(100px, 10vw, 200px);
+  text-align: center;
+  font-family: 'BianzhidaiPearl', sans-serif;
+  color: #463838;
+  text-decoration: none;
+  font-size: clamp(9px, 2vw, 18px);
+  position: relative;
+}
+
+.nav-item > a::after {
+  content: attr(data-text);
+  font-family: 'BianzhidaiMessy', sans-serif;
+  font-size: clamp(7px, 1.8vw, 14px);
+  color: #463838;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.nav-item > a:hover { color: transparent; }
+.nav-item > a:hover::after { opacity: 1; }

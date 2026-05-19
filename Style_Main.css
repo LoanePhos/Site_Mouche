@@ -27,38 +27,37 @@
 }
 
 @font-face {
+  font-family: 'BianzhidaiCloud';
+  src: url('fonts/bianzhidai_noBG-Cloud.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Garabosse';
   src: url('fonts/Garabosse-Perle.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Roberte';
-  src: url('fonts/Roberte-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
 /* ============================================================
                           NAVIGATION
 ============================================================ */
 
 .topnav {
-  background-color: #ffffff;                  /* Couleur du fond */                       /* Mode de fusion */
+  background-color: #ffffff;                  /* Couleur du fond */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2.6vw;                                   /* Espacement entre les items du menu */
-  width: clamp(360px, 60vw, 560px);             /* Largeur responsive du menu */
+  gap: 0.8vw;                                   /* Espacement entre les items du menu */
+  width: clamp(500px, 64vw, 680px);             /* Largeur responsive du menu */
   height: 6vh;                                  /* Hauteur du menu */
   position: fixed;
   top: 50%;
   left: 50%;   
   transform: translate(-50%, -50%);             /* Centrer le menu */
   z-index: 999;
-  border: 3.6px dotted black;                 /* Contour du menu */
+  border: 3.6px dotted #463838;                 /* Contour du menu */
   overflow: visible;
   white-space: nowrap;
 }
@@ -80,7 +79,7 @@
   width: clamp(100px, 10vw, 200px);             /* Largeur responsive des box d'item */
   text-align: center; 
   font-family: 'BianzhidaiPearl', sans-serif;   /* Font utilisée */
-  color: #000000;                             /* Couleur de la font */
+  color: #463838;                             /* Couleur de la font */
   text-decoration: none;
   font-size: clamp(9px, 2vw, 18px);             /* Taille responsive de la typo */
   position: relative;
@@ -91,7 +90,7 @@
   content: attr(data-text);                     /* Récupère data-text="..." du HTML */
   font-family: 'BianzhidaiMessy', sans-serif;
   font-size: clamp(7px, 1.8vw, 14px);           /* Taille responsive de la typo */
-  color: #000000;
+  color: #463838;
   position: absolute;
   inset: 0;                                     /* Couvre exactement le lien parent */
   display: flex;
@@ -111,7 +110,7 @@
   top: 100%;                                    /* Se positionne juste sous le nav-item */
   left: 0;
   background: #ffffff;
-  border: 3.6px dotted black;                 /* Contours */
+  border: 3.6px dotted #463838;                 /* Contours */
   z-index: 980;
   min-width: 100%;                              /* Au moins aussi large que le nav-item */
 }
@@ -123,13 +122,17 @@
   line-height: normal;
   padding: 12px 1.2vw;                           /* Écarts entre les items */
   font-family: 'Garabosse', sans-serif;
-  color: #000000;
+  color: #463838;
   text-decoration: none;
   font-size: clamp(10px, 1.3vw, 16px);           /* Taille responsive de la typo */
 }
 
 /* Affiche le dropdown quand la souris survole le nav-item parent */
 .nav-item:hover .dropdown { display: block; }
+
+.dropdown a:hover {
+  color: #7562C7;
+}
 
 
 /* ============================================================
@@ -244,28 +247,12 @@
   left: clamp(1rem, 5%, 6%);
 }
 
-/* Popup Crédits */
-.popup-credits {
-  width: clamp(400px, 50vw, 800px);
-  height: clamp(100px, 22vh, 240px);
-  top: clamp(8%, 12%, 15%);
-  left: clamp(1rem, 20%, 30%);
-}
-
 /* Popup Mouche */
 .popup-mouche {
-  width: clamp(160px, 18vw, 400px);
-  height: clamp(200px, 70vh, 800px);
+  width: clamp(220px, 26vw, 600px);
+  height: clamp(160px, 66vh,840px);
   top: clamp(1%, 2%, 4%);
-  right: clamp(1rem, 8%, 10%);
-}
-
-/* Popup Itinéraire */
-.popup-itineraire {
-  width: clamp(320px, 55vw, 800px);
-  height: clamp(200px, 36vh, 490px);
-  bottom: clamp(2%, 4%, 6%);
-  right: clamp(1rem, 10%, 16%);
+  right: clamp(1rem, 2%, 10%);
 }
 
 /* Sur mobile toutes les popups s'adaptent en pleine largeur */
@@ -281,13 +268,13 @@
     top: 10%;
     height: auto;
     min-height: 40vh;
-  }
+    }
 
   .popup-mouche {
     top: 8%;
     height: auto;
     min-height: 50vh;
-  }
+    }
 
 }
 
@@ -295,7 +282,7 @@
 .popup-box h2 {
   font-family: 'BianzhidaiPearl', sans-serif;
   font-size: clamp(14px, 2.2vw, 28px);
-  color: #000000;
+  color: #463838;
   margin-bottom: 1rem;
 }
 
@@ -303,15 +290,29 @@
 .popup-box h3 {
   font-family: 'Roberte', sans-serif;
   font-size: clamp(14px, 1.8vw, 22px);
-  color: #000000;
+  color: #463838;
   margin: 0;
-  -webkit-text-stroke: 0.5px #000000;  /* Légère épaisseur sur les navigateurs webkit */
+  -webkit-text-stroke: 0.5px #463838;  /* Légère épaisseur sur les navigateurs webkit */
 }
 
 /* Image dans la popup — pleine largeur avec marge en bas */
 .popup-box img {
   width: 100%;
-  margin-bottom: 1rem;
+  display: block;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin: 0;
+}
+
+.popup-mouche img:first-of-type {
+  width: calc(100% + 2 * clamp(0.75rem, 2vw, 2rem));
+  margin-left: calc(-1 * clamp(0.75rem, 2vw, 2rem));
+  margin-right: calc(-1 * clamp(0.75rem, 2vw, 2rem));
+  display: block;
+}
+
+.popup-machine img:first-of-type {
+  width: 50%
 }
 
 /* Texte courant dans la popup */
@@ -319,7 +320,10 @@
   font-family: 'Garabosse', sans-serif;
   font-size: clamp(10px, 1vw, 16px);
   color: #000000;
-  line-height: 1.6;
+  -webkit-text-stroke: 6px #95D8EF;
+  paint-order: stroke fill;
+  line-height: 1;
+  padding: 2vh;
 }
 
 /* Bouton de fermeture */
@@ -330,20 +334,56 @@
   font-family: 'BianzhidaiPearl', sans-serif;
   color: #000000;
   text-decoration: none;
-  font-size: clamp(14px, 1.2vw, 18px);
+  font-size: clamp(10px, 1.2vw, 14px);
 }
 
 /* Lien dans la popup Mouche */
 .popup-mouche-lien {
-  display: inline-block;
+  display: table;
+  text-align: center;
   margin-top: 1rem;
+  margin: 1rem auto;
   font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(11px, 1.3vw, 18px);
-  color: #000000;
+  size: clamp(10px, 1.2vw, 14px);
+  color: #463838;
   text-decoration: none;
-  background-color: #463838;
+  background-color: #B6F772;
+}
+
+.popup-machine-lien {
+  display: table;
+  text-align: center;
+  margin-top: 1rem;
+  margin: 1rem auto;
+  font-family: 'BianzhidaiPearl', sans-serif;
+  size: clamp(10px, 1.2vw, 14px);
+  color: #463838;
+  text-decoration: none;
+  background-color: #B6F772;
+}
+
+.popup-machine-lien:hover {
+  font-family: 'BianzhidaiMessy', sans-serif;
+  font-size: clamp(8px, 1vw, 12px);
 }
 
 .popup-mouche-lien:hover {
   font-family: 'BianzhidaiMessy', sans-serif;
+  font-size: clamp(8px, 1vw, 12px);
+}
+
+.popup-box strong {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-weight: normal;
+  font-size: clamp(10px, 1.8vw, 16px);
+  background-color: #95D8EF;
+  -webkit-text-stroke: 0;
+}
+
+.popup-box .highlight {
+  font-family: 'BianzhidaiCloud', sans-serif;
+  font-weight: normal;
+  font-size: clamp(10px, 1.2vw, 16px);
+  background-color: #95D8EF;
+  -webkit-text-stroke: 0;
 }
