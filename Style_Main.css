@@ -1,12 +1,22 @@
 /* ============================================================
-                            RESET
+                            BODY
 ============================================================ */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;                           /* En gros c'est jsute pour que ça s'adapte bien à tous les navigateurs */
+  box-sizing: border-box;
 }
 
+html, body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  cursor: url('images/cursor.png') 0 0, auto;
+  background-image: url(images/Fond_Bleu.webp);
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"], label[for], select, .nav-item, .nav-item > a, .dropdown a, .grille a, .popup-close, .popup-machine-lien, .popup-mouche-lien, [onclick], [tabindex] {
+  cursor: url('images/cursor_hover.png') 0 0, pointer !important;
+}
 
 /* ============================================================
                             FONTS
@@ -36,33 +46,32 @@
 @font-face {
   font-family: 'Garabosse';
   src: url('fonts/Garabosse-Perle.woff') format('woff');
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
 }
 
 /* ============================================================
-                          NAVIGATION
+                            MENU
 ============================================================ */
 
 .topnav {
-  background-color: #ffffff;                  /* Couleur du fond */
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.8vw;                                   /* Espacement entre les items du menu */
-  width: clamp(500px, 64vw, 680px);             /* Largeur responsive du menu */
-  height: 6vh;                                  /* Hauteur du menu */
+  gap: 0.8vw;
+  width: clamp(500px, 64vw, 680px);
+  height: 6vh;                                  
   position: fixed;
   top: 50%;
   left: 50%;   
-  transform: translate(-50%, -50%);             /* Centrer le menu */
+  transform: translate(-50%, -50%);
   z-index: 999;
-  box-shadow: 0px 0px 10px 10px #ffffff;            /* Contour du menu */
+  box-shadow: 0px 0px 10px 10px #ffffff;
   overflow: visible;
   white-space: nowrap;
 }
 
-/* Conteneur de chaque item du menu (Archives, Anarchiveuse…) */
 .nav-item {
   position: relative;
   height: 100%;
@@ -70,71 +79,64 @@
   align-items: center;
 }
 
-/* Items du menu principal */
 .nav-item > a {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(100px, 10vw, 200px);             /* Largeur responsive des box d'item */
+  width: clamp(100px, 10vw, 200px);        
   text-align: center; 
-  font-family: 'BianzhidaiPearl', sans-serif;   /* Font utilisée */
+  font-family: 'BianzhidaiPearl', sans-serif; 
   rotate: random;
-  color: #463838;                             /* Couleur de la font */
+  color: #463838;
   text-decoration: none;
-  font-size: clamp(9px, 2vw, 18px);             /* Taille responsive de la typo */
+  font-size: clamp(9px, 2vw, 18px);
   position: relative;
 }
 
-/* Item au survol */
 .nav-item > a::after {
-  content: attr(data-text);                     /* Récupère data-text="..." du HTML */
+  content: attr(data-text);
   font-family: 'BianzhidaiMessy', sans-serif;
-  font-size: clamp(7px, 1.8vw, 14px);           /* Taille responsive de la typo */
+  font-size: clamp(7px, 1.8vw, 14px);       
   color: #463838;
   position: absolute;
-  inset: 0;                                     /* Couvre exactement le lien parent */
+  inset: 0;                                  
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;                                   /* Invisible par défaut */
+  opacity: 0;                                 
 }
 
-/* Masque le texte normal au survol pour montrer le ::after sinon les textes bougent à cause des différentes typos */
 .nav-item > a:hover { color: transparent; }
 .nav-item > a:hover::after { opacity: 1; }
 
-/* Sous-Menu général set-up*/
 .dropdown {
   display: none;
   position: absolute;
-  top: 100%;                                    /* Se positionne juste sous le nav-item */
+  top: 100%; 
   left: 0;
   background: #ffffff;
-  border: 3.6px dotted #463838;                 /* Contours */
+  box-shadow: 0px 0px 6px 6px #ffffff;
   z-index: 980;
-  min-width: 100%;                              /* Au moins aussi large que le nav-item */
+  min-width: 100%;
 }
 
-/* Liens à l'intérieur du dropdown */
 .dropdown a {
   display: block;
   width: auto;
   line-height: normal;
-  padding: 12px 1.2vw;                           /* Écarts entre les items */
+  padding: 12px 1.2vw;
   font-family: 'Garabosse', sans-serif;
   color: #463838;
   text-decoration: none;
-  font-size: clamp(10px, 1.3vw, 16px);           /* Taille responsive de la typo */
+  font-size: clamp(10px, 1.3vw, 16px);
 }
-
-/* Affiche le dropdown quand la souris survole le nav-item parent */
-.nav-item:hover .dropdown { display: block; }
 
 .dropdown a:hover {
   color: #7562C7;
 }
 
+.nav-item:hover .dropdown { display: block; }
 
 /* ============================================================
                             GRILLE
@@ -142,51 +144,45 @@
 
 .grille {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);         /* Nombre de colonnes */
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   width: 100%;
 }
 
-/* Tablette */
-@media (max-width: 900px) {                      /* Limite mode tablette */
+@media (max-width: 900px) {
   .grille {
-    grid-template-columns: repeat(2, 1fr);       /* Nombre de colonnes */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobile */
-@media (max-width: 500px) {                      /* Limite mode mobile */
+@media (max-width: 500px) {         
   .grille {
-    grid-template-columns: 1fr;                  /* Nombre de colonnes */
+    grid-template-columns: 1fr;
   }
 }
 
-/* Chaque cellule de la grille — lien cliquable autour de l'image */
 .grille a {
   display: block;
   overflow: hidden;
-  aspect-ratio: 2 / 1;                          /* Format des images de la grille */
-  position: relative;                           /* Pour positionner l'overlay */
+  aspect-ratio: 2 / 1;
+  position: relative; 
 }
 
-/* Image dans la grille */
 .grille a img {
   width: 100%;
   height: 100%;
-  object-fit: cover;                            /* Recadre sans déformer */
+  object-fit: cover; 
   display: block;
-  transition: filter 0.4s ease;                 /* Transition douce au hover */
+  transition: filter 0.4s ease;
 }
 
-/* Effet sur l'image au survol */
 .grille a:hover img {
   filter: saturate(4) brightness(0.8);
 }
 
-/* Overlay */
 .grille a .overlay {
   position: absolute;
-  inset: 0;                                     /* Couvre toute la cellule */
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,50 +193,44 @@
   transition: opacity 0.4s ease;
 }
 
-/* Affiche l'overlay au survol */
 .grille a:hover .overlay {
   opacity: 1;
 }
 
-/* Titre dans l'overlay (date / heure) */
 .grille a .overlay h3 {
   font-family: 'BianzhidaiPearl', sans-serif;
-  font-size: clamp(14px, 1.5vw, 24px);          /* Taille responsive de la typo */
+  font-size: clamp(14px, 1.5vw, 24px);
   color: #ffffff;
   margin: 0;
   -webkit-text-stroke: 6px #463838;
   paint-order: stroke fill;
 }
 
-/* Sous-titre dans l'overlay (lieu / événement) */
 .grille a .overlay p {
   font-family: 'Garabosse', sans-serif;
-  font-size: clamp(11px, 1vw, 16px);            /* Taille responsive de la typo */
+  font-size: clamp(11px, 1vw, 16px);
   color: #ffffff;
   margin: 0;
   -webkit-text-stroke: 6px #463838;
   paint-order: stroke fill;
 }
-
 
 /* ============================================================
                           POP-UP
 ============================================================ */
 .popup-box {
-  display: none;                        /* Caché par défaut */
-  background: #ffffff;        /* Mode de fusion */
+  display: none;
+  background: #ffffff;
   border: 3.6px dotted black;
   padding: clamp(0.75rem, 2vw, 2rem);
-  overflow-y: auto;                     /* Scroll interne si le contenu dépasse */
-  position: fixed;                      /* Reste à l'écran indépendamment du scroll */
-  z-index: 500;                         /* Sous le menu mais au-dessus du contenu */
+  overflow-y: auto;
+  position: fixed;
+  z-index: 500;
   box-sizing: border-box;
 }
 
-/* Classe ajoutée par le JS pour afficher une popup */
 .popup-box.is-open { display: block; }
 
-/* Popup Machine */
 .popup-machine {
   width: clamp(220px, 32vw, 500px);
   height: clamp(200px, 60vh, 700px);
@@ -248,7 +238,6 @@
   left: clamp(1rem, 5%, 6%);
 }
 
-/* Popup Mouche */
 .popup-mouche {
   width: clamp(220px, 26vw, 600px);
   height: clamp(160px, 66vh,840px);
@@ -256,7 +245,6 @@
   right: clamp(1rem, 2%, 10%);
 }
 
-/* Sur mobile toutes les popups s'adaptent en pleine largeur */
 @media (max-width: 600px) {
   .popup-box {
     width: calc(100vw - 2rem) !important;
@@ -279,7 +267,6 @@
 
 }
 
-/* Titre principal de la popup */
 .popup-box h2 {
   font-family: 'BianzhidaiPearl', sans-serif;
   font-size: clamp(14px, 2.2vw, 28px);
@@ -287,7 +274,6 @@
   margin-bottom: 1rem;
 }
 
-/* Sous-titre (membres du collectif, etc.) */
 .popup-box h3 {
   font-family: 'Roberte', sans-serif;
   font-size: clamp(14px, 1.8vw, 22px);
@@ -296,7 +282,6 @@
   -webkit-text-stroke: 0.5px #463838;  /* Légère épaisseur sur les navigateurs webkit */
 }
 
-/* Image dans la popup — pleine largeur avec marge en bas */
 .popup-box img {
   width: 100%;
   display: block;
@@ -316,7 +301,6 @@
   width: 50%
 }
 
-/* Texte courant dans la popup */
 .popup-box p {
   font-family: 'Garabosse', sans-serif;
   font-size: clamp(10px, 1vw, 16px);
@@ -327,7 +311,6 @@
   padding: 2vh;
 }
 
-/* Bouton de fermeture */
 .popup-close {
   position: absolute;
   top: 12px;
@@ -338,7 +321,6 @@
   font-size: clamp(10px, 1.2vw, 14px);
 }
 
-/* Lien dans la popup Mouche */
 .popup-mouche-lien {
   display: table;
   text-align: center;

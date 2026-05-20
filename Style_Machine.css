@@ -1,5 +1,5 @@
 /* ============================================================
-                            RESET
+                            BODY
 ============================================================ */
 * {
   margin: 0;
@@ -7,14 +7,24 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  cursor: url('images/cursor.png') 0 0, auto;
+  background-image: url(images/Fond_Bleu.webp);
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"], label[for], select, .nav-item, .nav-item > a, .dropdown a, .grille a, .popup-close, .popup-machine-lien, .popup-mouche-lien, [onclick], [tabindex], .carousel-slide, .carousel-btn, .lightbox-close, .lightbox-nav {
+  cursor: url('images/cursor_hover.png') 0 0, pointer !important;
+}
 
 /* ============================================================
                             FONTS
 ============================================================ */
 
 @font-face {
-  font-family: 'BianzhidaiCloud';
-  src: url('fonts/bianzhidai_noBG-Cloud.woff') format('woff');
+  font-family: 'BianzhidaiMessy';
+  src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,30 +37,82 @@
 }
 
 @font-face {
-  font-family: 'Garabosse';
-  src: url('fonts/Garabosse-Perle.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Roberte';
-  src: url('fonts/Roberte-Regular.woff') format('woff');
+  font-family: 'BianzhidaiCloud';
+  src: url('fonts/bianzhidai_noBG-Cloud.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'BianzhidaiMessy';
-  src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
+  font-family: 'Garabosse';
+  src: url('fonts/Garabosse-Perle.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 /* ============================================================
-                            BODY
+                            MENU
 ============================================================ */
 
+.topnav {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8vw;
+  width: clamp(500px, 64vw, 680px);
+  height: 6vh;                                  
+  position: fixed;
+  top: 8%;
+  left: 50%;    
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  box-shadow: 0px 0px 10px 10px #ffffff;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item > a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(100px, 10vw, 200px);        
+  text-align: center; 
+  font-family: 'BianzhidaiPearl', sans-serif; 
+  rotate: random;
+  color: #463838;
+  text-decoration: none;
+  font-size: clamp(9px, 2vw, 18px);
+  position: relative;
+}
+
+.nav-item > a::after {
+  content: attr(data-text);
+  font-family: 'BianzhidaiMessy', sans-serif;
+  font-size: clamp(7px, 1.8vw, 14px);    
+  color: #463838;
+  position: absolute;
+  inset: 0;                                 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;                           
+}
+
+.nav-item > a:hover { color: transparent; }
+.nav-item > a:hover::after { opacity: 1; }
+
+/* ============================================================
+                            BODY
+============================================================ */
 body {
   overflow-x: hidden;
   background-image: url(images/Fond_Bleu.webp);
@@ -82,7 +144,6 @@ body {
   display: block;
 }
 
-/* Ligne 1 : titre sur 2 colonnes, image à droite */
 .bloc-titre-texte { grid-column: 1 / 3; grid-row: 1; }
 .bloc-titre-img   { grid-column: 3;     grid-row: 1; height: 40vh; }
 
@@ -161,63 +222,6 @@ body {
 }
 
 /* ============================================================
-                            FOOTER
-============================================================ */
-
-.footer-block {
-  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
-  padding-top: 10vh;
-  text-align: left;
-}
-
-.footer-block p {
-  font-family: 'Garabosse', sans-serif;
-  font-weight: bold;
-  font-size: clamp(14px, 1.2vw, 20px);
-  color: #463838;
-  margin-bottom: 0.5rem;
-  -webkit-text-stroke: 6px #B6F772;
-  paint-order: stroke fill;
-}
-
-.footer-block h4 {
-  font-size: clamp(18px, 2vw, 32px);
-  font-weight: normal;
-  line-height: 1;
-}
-
-.footer-block strong {
-  font-family: 'BianzhidaiPearl', sans-serif;
-  font-weight: normal;
-  color: #463838;
-  -webkit-text-stroke: 6px #B6F772;
-  paint-order: stroke fill;
-  background-color: #B6F772;
-}
-
-.footer-block .highlight {
-  font-family: 'BianzhidaiCloud', sans-serif;
-  font-weight: normal;
-  color: #463838;
-  -webkit-text-stroke: 6px #B6F772;
-  paint-order: stroke fill;
-  background-color: #B6F772;
-}
-
-.footer-block-logos {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.footer-block-logos img {
-  height: clamp(30px, 4vw, 60px);
-  width: auto;
-}
-
-/* ============================================================
                           CARTE
 ============================================================ */
 .carte {
@@ -292,58 +296,58 @@ body {
 }
 
 /* ============================================================
-                          NAV
+                            FOOTER
 ============================================================ */
 
-.topnav {
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: clamp(500px, 64vw, 680px);
-  height: 6vh;
-  position: fixed;
-  top: 8%;
-  left: 50%;   
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  border: 3.6px dotted #463838;
-  overflow: visible;
-  white-space: nowrap;
+.footer-block {
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
+  padding-top: 10vh;
+  text-align: left;
 }
 
-.nav-item {
-  height: 100%;
-  display: flex;
-  align-items: center;
+.footer-block p {
+  font-family: 'Garabosse', sans-serif;
+  font-weight: bold;
+  font-size: clamp(14px, 1.2vw, 20px);
+  color: #463838;
+  margin-bottom: 0.5rem;
+  -webkit-text-stroke: 6px #B6F772;
+  paint-order: stroke fill;
 }
 
-.nav-item > a {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(100px, 10vw, 200px);
-  text-align: center;
+.footer-block h4 {
+  font-size: clamp(18px, 2vw, 32px);
+  font-weight: normal;
+  line-height: 1;
+}
+
+.footer-block strong {
   font-family: 'BianzhidaiPearl', sans-serif;
+  font-weight: normal;
   color: #463838;
-  text-decoration: none;
-  font-size: clamp(9px, 2vw, 18px);
-  position: relative;
+  -webkit-text-stroke: 6px #B6F772;
+  paint-order: stroke fill;
+  background-color: #B6F772;
 }
 
-.nav-item > a::after {
-  content: attr(data-text);
-  font-family: 'BianzhidaiMessy', sans-serif;
-  font-size: clamp(7px, 1.8vw, 14px);
+.footer-block .highlight {
+  font-family: 'BianzhidaiCloud', sans-serif;
+  font-weight: normal;
   color: #463838;
-  position: absolute;
-  inset: 0;
+  -webkit-text-stroke: 6px #B6F772;
+  paint-order: stroke fill;
+  background-color: #B6F772;
+}
+
+.footer-block-logos {
   display: flex;
   align-items: center;
-  justify-content: center;
-  opacity: 0;
+  justify-content: left;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.nav-item > a:hover { color: transparent; }
-.nav-item > a:hover::after { opacity: 1; }
+.footer-block-logos img {
+  height: clamp(30px, 4vw, 60px);
+  width: auto;
+}

@@ -1,5 +1,5 @@
 /* ============================================================
-                            RESET
+                            BODY
 ============================================================ */
 * {
   margin: 0;
@@ -7,14 +7,24 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  cursor: url('images/cursor.png') 0 0, auto;
+  background-image: url(images/Fond_Bleu.webp);
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"], label[for], select, .nav-item, .nav-item > a, .dropdown a, .grille a, .popup-close, .popup-machine-lien, .popup-mouche-lien, [onclick], [tabindex], .carousel-slide, .carousel-btn, .lightbox-close, .lightbox-nav {
+  cursor: url('images/cursor_hover.png') 0 0, pointer !important;
+}
 
 /* ============================================================
                             FONTS
 ============================================================ */
 
 @font-face {
-  font-family: 'BianzhidaiCloud';
-  src: url('fonts/bianzhidai_noBG-Cloud.woff') format('woff');
+  font-family: 'BianzhidaiMessy';
+  src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,41 +37,84 @@
 }
 
 @font-face {
+  font-family: 'BianzhidaiCloud';
+  src: url('fonts/bianzhidai_noBG-Cloud.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Garabosse';
   src: url('fonts/Garabosse-Perle.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Roberte';
-  src: url('fonts/Roberte-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
-@font-face {
-  font-family: 'BianzhidaiMessy';
-  src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 
 /* ============================================================
-                            BODY
+                            MENU
 ============================================================ */
 
-body {
+.topnav {
   background-color: #ffffff;
-  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8vw;
+  width: clamp(500px, 64vw, 680px);
+  height: 6vh;                                  
+  position: fixed;
+  top: 8%;
+  left: 50%;    
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  box-shadow: 0px 0px 10px 10px #ffffff;
+  overflow: visible;
+  white-space: nowrap;
 }
 
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item > a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(100px, 10vw, 200px);        
+  text-align: center; 
+  font-family: 'BianzhidaiPearl', sans-serif; 
+  rotate: random;
+  color: #463838;
+  text-decoration: none;
+  font-size: clamp(9px, 2vw, 18px);
+  position: relative;
+}
+
+.nav-item > a::after {
+  content: attr(data-text);
+  font-family: 'BianzhidaiMessy', sans-serif;
+  font-size: clamp(7px, 1.8vw, 14px);    
+  color: #463838;
+  position: absolute;
+  inset: 0;                                 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;                           
+}
+
+.nav-item > a:hover { color: transparent; }
+.nav-item > a:hover::after { opacity: 1; }
+
 /* ============================================================
-                            TITRE
+                        BANNIERE
 ============================================================ */
 
-.hero-banner {
+.banner {
   background-image: url(images/Header_Mouche.webp);
   background-size: cover;
   background-position: center;
@@ -72,7 +125,7 @@ body {
   padding-top: 80vh;
 }
 
-.site-tagline {
+.tagline {
   font-family: 'Garabosse', sans-serif;
   font-size: clamp(26px, 2vw, 36px);
   text-align: center;
@@ -119,9 +172,8 @@ body {
   -webkit-text-stroke: 0;
 }
 
-
 /* ============================================================
-                    BANNIÈRES IMAGE FINES
+                        BANNIÈRES IMAGES
 ============================================================ */
 
 .img-banner {
@@ -143,12 +195,12 @@ body {
                           SECTION VIDÉO
 ============================================================ */
 
-.section-banner {
+.section-video {
   position: relative;
   width: 100%;
 }
 
-.section-banner img {
+.section-video img {
   width: 100%;
   height: clamp(110vh, 130vh, 160vh);
   object-fit: cover;
@@ -222,10 +274,9 @@ body {
 .carousel-section {
   padding: clamp(2rem, 4vw, 4rem) 0;
   text-align: center;
-  overflow: hidden; /* bloque le scroll horizontal */
+  overflow: hidden;
 }
 
-/* Titre stylisé du carrousel */
 .carousel-title {
   display: inline-block;
   font-family: 'BianzhidaiCloud', sans-serif;
@@ -237,7 +288,6 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Conteneur principal : flèches à gauche et droite, centré */
 .carousel-outer {
   display: flex;
   align-items: center;
@@ -246,7 +296,6 @@ body {
   width: 100%;
 }
 
-/* Boutons flèches alignés verticalement au centre du carrousel */
 .carousel-btn {
   background: none;
   border: none;
@@ -261,20 +310,17 @@ body {
   align-self: center;
 }
 
-/* Fenêtre visible du carrousel — masque ce qui dépasse, sans dégradé */
 .carousel-window {
   overflow: hidden;
   width: 90%;
 }
 
-/* Track défilant */
 .carousel-track {
   display: flex;
   gap: 1.5rem;
   flex-wrap: nowrap;
 }
 
-/* Slide : 3 visibles sur desktop — toujours entières, pas de dégradé */
 .carousel-slide {
   flex: 0 0 calc(33.333% - 1rem);
   cursor: pointer;
@@ -283,7 +329,6 @@ body {
   transform: scale(0.95);
 }
 
-/* Slide actif (centre) */
 .carousel-slide.active {
   opacity: 1;
   transform: scale(1);
@@ -295,8 +340,6 @@ body {
   object-fit: cover;
   display: block;
 }
-
-/* ── Lightbox ──────────────────────────────────────────────── */
 
 .lightbox {
   display: none;
@@ -312,7 +355,6 @@ body {
   display: flex;
 }
 
-/* Image centrée à 90% de l'écran */
 #lightbox-img {
   max-width: 90vw;
   max-height: 90vh;
@@ -321,7 +363,6 @@ body {
   border-radius: 2px;
 }
 
-/* Bouton fermer — toujours en haut à droite, fixe */
 .lightbox-close {
   position: fixed;
   top: 1.2rem;
@@ -345,7 +386,6 @@ body {
   background: rgba(255,255,255,0.3);
 }
 
-/* Flèches navigation lightbox — fixes sur les côtés, indépendantes de l'image */
 .lightbox-nav {
   position: fixed;
   top: 50%;
@@ -371,6 +411,48 @@ body {
 
 #lightbox-next {
   right: 0.5rem;
+}
+
+/* ============================================================
+                      RESPONSIVE CARROUSEL
+============================================================ */
+
+/* Tablette : 2 slides visibles entières */
+@media (max-width: 900px) {
+  .carousel-window {
+    width: 92%;
+  }
+
+  .carousel-slide {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+/* Mobile : 1 slide visible entière */
+@media (max-width: 600px) {
+  .text-block {
+    margin: 0.5rem;
+  }
+
+  .video-wrapper {
+    width: calc(100% - 1rem);
+  }
+
+  .carousel-window {
+    width: 90%;
+  }
+
+  .carousel-slide {
+    flex: 0 0 calc(100% - 0.75rem);
+  }
+
+  .carousel-slide img {
+    height: 220px;
+  }
+
+  .carousel-btn {
+    padding: 0 0.5rem;
+  }
 }
 
 /* ============================================================
@@ -426,102 +508,3 @@ body {
   height: clamp(30px, 4vw, 60px);
   width: auto;
 }
-
-/* ============================================================
-                          RESPONSIVE
-============================================================ */
-
-/* Tablette : 2 slides visibles entières */
-@media (max-width: 900px) {
-  .carousel-window {
-    width: 92%;
-  }
-
-  .carousel-slide {
-    flex: 0 0 calc(50% - 0.75rem);
-  }
-}
-
-/* Mobile : 1 slide visible entière */
-@media (max-width: 600px) {
-  .text-block {
-    margin: 0.5rem;
-  }
-
-  .video-wrapper {
-    width: calc(100% - 1rem);
-  }
-
-  .carousel-window {
-    width: 90%;
-  }
-
-  .carousel-slide {
-    flex: 0 0 calc(100% - 0.75rem);
-  }
-
-  .carousel-slide img {
-    height: 220px;
-  }
-
-  .carousel-btn {
-    padding: 0 0.5rem;
-  }
-}
-
-/* ============================================================
-                          NAV
-============================================================ */
-
-.topnav {
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: clamp(500px, 64vw, 680px);
-  height: 6vh;
-  position: fixed;
-  top: 8%;
-  left: 50%;   
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  border: 3.6px dotted #463838;
-  overflow: visible;
-  white-space: nowrap;
-}
-
-.nav-item {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.nav-item > a {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(100px, 10vw, 200px);
-  text-align: center;
-  font-family: 'BianzhidaiPearl', sans-serif;
-  color: #463838;
-  text-decoration: none;
-  font-size: clamp(9px, 2vw, 18px);
-  position: relative;
-}
-
-.nav-item > a::after {
-  content: attr(data-text);
-  font-family: 'BianzhidaiMessy', sans-serif;
-  font-size: clamp(7px, 1.8vw, 14px);
-  color: #463838;
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-}
-
-.nav-item > a:hover { color: transparent; }
-.nav-item > a:hover::after { opacity: 1; }

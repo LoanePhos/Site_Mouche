@@ -1,34 +1,118 @@
 /* ============================================================
-                            RESET
+                            BODY
 ============================================================ */
-
-@font-face {
-  font-family: 'BianzhidaiPearl';
-  src: url('fonts/bianzhidai_noBG-Pearl.woff') format('woff');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+html, body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  cursor: url('images/cursor.png') 0 0, auto;
+  background-image: url(images/Fond_Bleu.webp);
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"], label[for], select, .nav-item, .nav-item > a, .dropdown a, .grille a, .popup-close, .popup-machine-lien, .popup-mouche-lien, [onclick], [tabindex], .carousel-slide, .carousel-btn, .lightbox-close, .lightbox-nav {
+  cursor: url('images/cursor_hover.png') 0 0, pointer !important;
+}
+
+/* ============================================================
+                            FONTS
+============================================================ */
 
 @font-face {
   font-family: 'BianzhidaiMessy';
   src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BianzhidaiPearl';
+  src: url('fonts/bianzhidai_noBG-Pearl.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BianzhidaiCloud';
+  src: url('fonts/bianzhidai_noBG-Cloud.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Garabosse';
   src: url('fonts/Garabosse-Perle.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;                           /* En gros c'est jsute pour que ça s'adapte bien à tous les navigateurs */
+/* ============================================================
+                            MENU
+============================================================ */
+
+.topnav {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8vw;
+  width: clamp(500px, 64vw, 680px);
+  height: 6vh;                                  
+  position: fixed;
+  top: 8%;
+  left: 50%;    
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  box-shadow: 0px 0px 10px 10px #ffffff;
+  overflow: visible;
+  white-space: nowrap;
 }
 
-body {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  cursor: url('images/cursor.png'), auto;
-  background-image: url(images/Fond_Bleu.webp);
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
+
+.nav-item > a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(100px, 10vw, 200px);        
+  text-align: center; 
+  font-family: 'BianzhidaiPearl', sans-serif; 
+  rotate: random;
+  color: #463838;
+  text-decoration: none;
+  font-size: clamp(9px, 2vw, 18px);
+  position: relative;
+}
+
+.nav-item > a::after {
+  content: attr(data-text);
+  font-family: 'BianzhidaiMessy', sans-serif;
+  font-size: clamp(7px, 1.8vw, 14px);    
+  color: #463838;
+  position: absolute;
+  inset: 0;                                 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;                           
+}
+
+.nav-item > a:hover { color: transparent; }
+.nav-item > a:hover::after { opacity: 1; }
+
+/* ============================================================
+                            VIDEO
+============================================================ */
 
 .video-wrapper {
   position: relative;
@@ -50,6 +134,10 @@ body {
   border: none;
   object-fit: cover;
 }
+
+/* ============================================================
+                          GRILLE SOURCES
+============================================================ */
 
 .video-grid {
   position: relative;
@@ -115,70 +203,8 @@ body {
 }
 
 /* ============================================================
-                          NAV
+                          INFORMATIONS
 ============================================================ */
-
-.topnav {
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: clamp(500px, 64vw, 680px);
-  height: 6vh;
-  position: fixed;
-  top: 8%;
-  left: 50%;   
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  box-shadow: 0px 0px 10px 10px #ffffff;
-  overflow: visible;
-  white-space: nowrap;
-}
-
-.nav-item {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.nav-item > a {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(100px, 10vw, 200px);
-  text-align: center;
-  font-family: 'BianzhidaiPearl', sans-serif;
-  color: #463838;
-  text-decoration: none;
-  font-size: clamp(9px, 2vw, 18px);
-  position: relative;
-}
-
-.nav-item > a::after {
-  content: attr(data-text);
-  font-family: 'BianzhidaiMessy', sans-serif;
-  font-size: clamp(7px, 1.8vw, 14px);
-  color: #463838;
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-}
-
-.nav-item > a:hover { color: transparent; }
-.nav-item > a:hover::after { opacity: 1; }
-
-*, *:hover, a, button, iframe {
-  cursor: url('images/cursor.png'), auto !important;
-}
-
-a:hover, button:hover, [data-popup]:hover {
-  cursor: url('images/cursor_hover.png'), auto !important;
-}
-
 
 .infos {
   padding-top: 4vh; /* pousse le contenu sous la vidéo */
