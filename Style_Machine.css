@@ -56,6 +56,7 @@ body {
   background-image: url(images/Fond_Bleu.webp);
   background-size: cover;
   animation: fadeIn 0.6s ease;
+  cursor: url('images/cursor.png'), auto;
 }
 
 @keyframes fadeIn {

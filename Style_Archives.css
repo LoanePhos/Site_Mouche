@@ -1,6 +1,22 @@
 /* ============================================================
                             RESET
 ============================================================ */
+
+@font-face {
+  font-family: 'BianzhidaiPearl';
+  src: url('fonts/bianzhidai_noBG-Pearl.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'BianzhidaiMessy';
+  src: url('fonts/bianzhidai_noBG-Messy.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Garabosse';
+  src: url('fonts/Garabosse-Perle.woff') format('woff');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,15 +24,24 @@
 }
 
 body {
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  cursor: url('images/cursor.png'), auto;
+  background-image: url(images/Fond_Bleu.webp);
 }
 
 .video-wrapper {
   position: relative;
   width: 100vw;
-  height: clamp(20vh, 70vh ,100vh);
+  height: 100vh;
   overflow: hidden;
   background: #000;
+}
+
+@media (max-width: 800px) {
+  .video-wrapper {
+    height: 30vh;
+  }
 }
 
 .video-frame {
@@ -26,19 +51,33 @@ body {
   object-fit: cover;
 }
 
-
 .video-grid {
   position: relative;
   z-index: 1;
-  background: #ffffff;
   padding: 2rem;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .grille-videos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8rem;
+  padding: 0.8rem;
+}
+
+@media (max-width: 1200px) {
+  .grille-videos { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .grille-videos { grid-template-columns: repeat(3, 1fr); }
+  .video-grid { width: 90%; }
+}
+
+@media (max-width: 600px) {
+  .grille-videos { grid-template-columns: repeat(2, 1fr); }
+  .video-grid { width: 100%; }
 }
 
 .vignette {
@@ -75,14 +114,6 @@ body {
   padding: 0.2rem 0.4rem;
 }
 
-.infos {
-  margin-top: 10vh; /* pousse le contenu sous la vidéo */
-  position: relative;
-  z-index: 1;
-  background: #ffffff; /* ou ta couleur de fond */
-  padding: 2rem;
-}
-
 /* ============================================================
                           NAV
 ============================================================ */
@@ -99,7 +130,7 @@ body {
   left: 50%;   
   transform: translate(-50%, -50%);
   z-index: 999;
-  border: 3.6px dotted #463838;
+  box-shadow: 0px 0px 10px 10px #ffffff;
   overflow: visible;
   white-space: nowrap;
 }
@@ -139,3 +170,110 @@ body {
 
 .nav-item > a:hover { color: transparent; }
 .nav-item > a:hover::after { opacity: 1; }
+
+*, *:hover, a, button, iframe {
+  cursor: url('images/cursor.png'), auto !important;
+}
+
+a:hover, button:hover, [data-popup]:hover {
+  cursor: url('images/cursor_hover.png'), auto !important;
+}
+
+
+.infos {
+  padding-top: 4vh; /* pousse le contenu sous la vidéo */
+  position: relative;
+  padding: 2rem;
+}
+
+.infos h2 {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(26px, 5vw, 48px);
+  color: #463838;
+  font-weight: normal;
+  background-color: #B6F772;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  display: inline;
+}
+
+.infos h3 {
+  font-family: 'Garabosse', sans-serif;
+  font-size: clamp(16px, 2vw, 26px);
+  font-weight: bold;
+  color: #463838;
+  -webkit-text-stroke: 4px #B6F772;
+  paint-order: stroke fill;
+  margin-bottom: 0.5rem;
+}
+
+.infos p {
+  font-family: 'Garabosse', sans-serif;
+  font-size: clamp(14px, 1vw, 18px);
+  color: #463838;
+  -webkit-text-stroke: 6px #95D8EF;
+  paint-order: stroke fill;
+  margin-bottom: 1.5rem;
+}
+
+.infos strong {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  background-color: #95D8EF;
+  font-size: clamp(20px, 1vw, 28px);
+  font-weight: normal;
+  -webkit-text-stroke: 0 !important;
+}
+
+.infos button {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(10px, 1vw, 14px);
+  color: #9583FF;
+  background-color:#ffffff ;
+  border: 3.6px dotted #9583FF;
+  padding: 0.4rem 1rem;
+  cursor: url('images/cursor.png'), auto;
+  margin-right: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.infos button:hover {
+  background-color: #9583FF;
+  color: #ffffff;
+}
+
+.infos-participants {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.infos h4 {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(14px, 1vw, 20px);
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #95D8EF;
+  line-height: 1.4vh;
+  padding: 1vh;
+  margin-top: 1vh;
+  display: inline-block;
+} 
+
+.infos img {
+  width: 100%;
+  height: clamp(100px, 20vh, 250px);
+  object-fit: cover;
+  display: block;
+  margin-top: 1.5rem;
+}
+
+.video-grid h3 {
+  font-family: 'BianzhidaiPearl', sans-serif;
+  font-size: clamp(16px, 2vw, 26px);
+  font-weight: bold;
+  background-color: #B6F772;
+  paint-order: stroke fill;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}

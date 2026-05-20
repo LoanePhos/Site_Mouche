@@ -57,7 +57,7 @@
   left: 50%;   
   transform: translate(-50%, -50%);             /* Centrer le menu */
   z-index: 999;
-  border: 3.6px dotted #463838;                 /* Contour du menu */
+  box-shadow: 0px 0px 10px 10px #ffffff;            /* Contour du menu */
   overflow: visible;
   white-space: nowrap;
 }
@@ -79,6 +79,7 @@
   width: clamp(100px, 10vw, 200px);             /* Largeur responsive des box d'item */
   text-align: center; 
   font-family: 'BianzhidaiPearl', sans-serif;   /* Font utilisée */
+  rotate: random;
   color: #463838;                             /* Couleur de la font */
   text-decoration: none;
   font-size: clamp(9px, 2vw, 18px);             /* Taille responsive de la typo */
