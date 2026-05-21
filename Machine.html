@@ -9,6 +9,71 @@
 <body>
 
 <!-------------------------------------------------------------
+                      TRAINEE SOURIS        
+-------------------------------------------------------------->
+  <script>
+  const MAX_TRACES = 4;
+  const SPACING = 40;
+  const IMAGES = [
+    'images/trainee1.png',
+    'images/trainee2.png',
+    'images/trainee3.png',
+  ];
+  let imageIndex = 0;
+  const traces = [];
+  let lastX = -9999, lastY = -9999;
+
+  function createTrace(x, y) {
+    // Décalage aléatoire autour du point
+    const offsetX = (Math.random() - 0.5) * 40; // ±10px
+    const offsetY = (Math.random() - 0.5) * 40; // ±10px
+    const rotation = Math.floor(Math.random() * 360);
+
+    // Alterner les images dans l'ordre
+    const src = IMAGES[imageIndex % IMAGES.length];
+    imageIndex++;
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.cssText = `
+      position: fixed;
+      pointer-events: none;
+      z-index: 99999;
+      width: 32px;
+      height: auto;
+      transform: translate(-50%, -50%) rotate(${rotation}deg);
+      transition: opacity 0.3s ease;
+    `;
+    img.style.left = (x + offsetX) + 'px';
+    img.style.top = (y + offsetY) + 'px';
+    img.style.opacity = '1';
+    document.body.appendChild(img);
+    traces.push({ el: img });
+
+    if (traces.length > MAX_TRACES) {
+      const old = traces.shift();
+      old.el.remove();
+    }
+
+    traces.forEach((t, i) => {
+      t.el.style.opacity = (i + 1) / traces.length;
+    });
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist >= SPACING) {
+      createTrace(e.clientX, e.clientY);
+      lastX = e.clientX;
+      lastY = e.clientY;
+    }
+  });
+</script>
+
+<!-------------------------------------------------------------
                           MENU        
 -------------------------------------------------------------->
 <header class="topnav">
